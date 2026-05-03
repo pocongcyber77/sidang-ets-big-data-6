@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>persentasi.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!-- markdownlint-disable MD012 MD033 MD024 -->
+<h1 id="persentasi-arsitektur---airquality-alert">Persentasi Arsitektur - AirQuality Alert</h1>
+<table>
+<thead>
+<tr>
+<th>Bagian</th>
+<th>Isi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diagram</td>
+<td>Blok Mermaid yang dapat dirender.</td>
+</tr>
+<tr>
+<td>Tujuan diagram</td>
+<td>Apa yang ingin dijelaskan oleh diagram tersebut.</td>
+</tr>
+<tr>
+<td>Penjelasan kotak</td>
+<td>Makna setiap node, service, file, atau layer.</td>
+</tr>
+<tr>
+<td>Penjelasan flow</td>
+<td>Makna setiap panah dan urutan kerja.</td>
+</tr>
+<tr>
+<td>Narasi presentasi</td>
+<td>Kalimat yang dapat dipakai saat menjelaskan ke dosen/audience.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ringkasan-sistem-satu-menit">Ringkasan Sistem Satu Menit</h2>
+<p>AirQuality Alert adalah pipeline Big Data yang mengalirkan data kualitas udara dan berita lingkungan dari sumber eksternal sampai dashboard web.</p>
+<ul>
+<li><code>producer_api.py</code> mengambil AQI dari AQICN atau simulator. Producer dapat dibayangkan seperti petugas lapangan yang mengambil data dari sumber, lalu mengirimkannya ke jalur distribusi.</li>
+<li><code>producer_rss.py</code> mengambil berita dari RSS, membersihkan summary, dan mencegah duplikasi. RSS di sini berperan seperti daftar berita langganan yang dicek berkala.</li>
+<li>Kafka memisahkan producer dari consumer melalui dua topic: <code>airquality-api</code> dan <code>airquality-rss</code>. Kafka dapat dianalogikan sebagai ruang tunggu pesan, sedangkan topic adalah rak atau jalur khusus untuk jenis pesan tertentu.</li>
+<li><code>consumer_to_hdfs.py</code> membaca Kafka, melakukan buffer, menulis data ke HDFS, dan membuat mirror JSON untuk dashboard. Consumer adalah pihak yang mengambil pesan dari ruang tunggu, buffer adalah wadah sementara, dan mirror JSON adalah salinan kecil agar dashboard cepat membaca data terbaru.</li>
+<li>HDFS menyimpan raw data dan hasil Spark di <code>/data/airquality</code>. HDFS adalah gudang penyimpanan besar, raw data adalah data mentah sebelum diringkas, dan hasil Spark adalah data yang sudah dianalisis.</li>
+<li><code>spark/analysis.ipynb</code> menghitung tiga analisis utama. Spark berperan seperti mesin pengolah data besar yang mengubah data mentah menjadi insight.</li>
+<li><code>dashboard/app.py</code> menyajikan JSON ke frontend. JSON adalah format pertukaran data yang mudah dibaca program, sedangkan frontend adalah bagian tampilan yang dilihat pengguna.</li>
+<li><code>index.html</code> dan <code>style.css</code> menampilkan dashboard yang auto-refresh. Auto-refresh berarti halaman memperbarui isi secara otomatis tanpa pengguna menekan tombol refresh manual.</li>
+</ul>
+<h2 id="prinsip-penjelasan-untuk-presentasi">Prinsip Penjelasan untuk Presentasi</h2>
+<p>Karena audiens terdiri dari penguji teknis dan orang non-teknis, setiap istilah teknis sebaiknya selalu diikuti makna sederhananya. Polanya dapat memakai rumus berikut:</p>
+<blockquote>
+<p>Sebutkan istilah teknis, jelaskan fungsi teknisnya, lalu beri analogi sehari-hari.</p>
+</blockquote>
+<p>Contoh:</p>
+<blockquote>
+<p>Flush terjadi jika <code>BUFFER_MAX_RECORDS</code> tercapai atau <code>BUFFER_FLUSH_SEC</code> tercapai. Flush berarti proses mengosongkan buffer, yaitu wadah sementara yang menampung data sebelum ditulis permanen. <code>BUFFER_MAX_RECORDS</code> adalah batas jumlah data dalam wadah, sedangkan <code>BUFFER_FLUSH_SEC</code> adalah batas waktu menunggu. Jadi sistem tidak menulis satu per satu, tetapi menunggu sampai data cukup banyak atau waktu tunggunya habis, seperti mengirim paket secara rombongan agar lebih efisien.</p>
+</blockquote>
+<h2 id="kamus-istilah-teknis-singkat">Kamus Istilah Teknis Singkat</h2>
+<p>Bagian ini dapat dipakai sebagai pegangan saat ada istilah teknis muncul di diagram.</p>
+<table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Penjelasan Teknis</th>
+<th>Penjelasan Non-Teknis untuk Presentasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AQI</td>
+<td>Air Quality Index, angka indeks kualitas udara.</td>
+<td>Nilai ringkas untuk menunjukkan udara sedang baik, sedang, atau buruk. Semakin tinggi angkanya, semakin perlu diwaspadai.</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Antarmuka untuk mengambil data dari sistem lain.</td>
+<td>Seperti loket resmi yang menyediakan data dengan format tertentu. Program kita bertanya ke loket itu, lalu menerima jawaban.</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>Format feed berita yang bisa dibaca otomatis.</td>
+<td>Seperti daftar langganan berita. Sistem mengecek daftar itu secara berkala tanpa membuka situs satu per satu.</td>
+</tr>
+<tr>
+<td>Producer</td>
+<td>Program yang mengambil data lalu mengirimkannya ke Kafka.</td>
+<td>Seperti kurir awal yang mengambil paket dari sumber dan meletakkannya di ruang tunggu.</td>
+</tr>
+<tr>
+<td>Consumer</td>
+<td>Program yang membaca pesan dari Kafka lalu memprosesnya.</td>
+<td>Seperti petugas penerima paket yang mengambil paket dari ruang tunggu dan menyimpannya ke gudang.</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>Message broker untuk menampung aliran pesan.</td>
+<td>Seperti terminal atau ruang tunggu pesan agar pengirim dan penerima tidak harus bekerja pada detik yang sama.</td>
+</tr>
+<tr>
+<td>Topic</td>
+<td>Kanal pesan di Kafka.</td>
+<td>Seperti rak berbeda untuk jenis paket berbeda. Data AQI masuk rak AQI, berita masuk rak RSS.</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>Satu unit data yang dikirim ke Kafka.</td>
+<td>Seperti satu paket kecil berisi informasi kota, nilai AQI, waktu, atau berita.</td>
+</tr>
+<tr>
+<td>Key</td>
+<td>Identitas pembeda pada message Kafka.</td>
+<td>Seperti label pada paket. Misalnya <code>city_slug</code> membuat data Surabaya punya label yang konsisten.</td>
+</tr>
+<tr>
+<td>Buffer</td>
+<td>Penampung sementara sebelum data ditulis permanen.</td>
+<td>Seperti keranjang sementara. Data dikumpulkan dulu supaya penulisan ke gudang tidak terlalu sering.</td>
+</tr>
+<tr>
+<td>Flush</td>
+<td>Proses mengirim isi buffer ke penyimpanan.</td>
+<td>Seperti mengosongkan keranjang ke gudang. Setelah keranjang cukup penuh atau waktu tunggu habis, isinya disimpan.</td>
+</tr>
+<tr>
+<td>Batch</td>
+<td>Sekelompok data yang diproses bersama.</td>
+<td>Seperti mengirim banyak paket sekali jalan agar lebih efisien daripada mengirim satu per satu.</td>
+</tr>
+<tr>
+<td>Commit offset</td>
+<td>Menandai pesan Kafka sudah berhasil diproses.</td>
+<td>Seperti memberi tanda centang bahwa paket sudah aman sampai gudang. Jika belum aman, jangan dicentang dulu.</td>
+</tr>
+<tr>
+<td>Offset</td>
+<td>Posisi pesan terakhir yang dibaca di Kafka.</td>
+<td>Seperti nomor antrean terakhir yang sudah dilayani.</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td>Hadoop Distributed File System, penyimpanan data terdistribusi.</td>
+<td>Seperti gudang besar yang dapat menyimpan data historis dalam jumlah banyak.</td>
+</tr>
+<tr>
+<td>DataNode</td>
+<td>Node penyimpan data di HDFS.</td>
+<td>Seperti rak atau cabang gudang tempat potongan data disimpan.</td>
+</tr>
+<tr>
+<td>NameNode</td>
+<td>Pengatur lokasi file di HDFS.</td>
+<td>Seperti kepala gudang yang tahu file ada di rak mana.</td>
+</tr>
+<tr>
+<td>NDJSON</td>
+<td>Format file berisi satu JSON per baris.</td>
+<td>Seperti buku catatan; setiap baris adalah satu kejadian data, sehingga mudah dibaca bertahap.</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>Format penyimpanan kolom untuk analitik.</td>
+<td>Seperti arsip yang disusun rapi per kolom sehingga mesin analisis lebih cepat membaca bagian yang dibutuhkan.</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>Mesin pemrosesan data besar.</td>
+<td>Seperti dapur analitik yang mengolah data mentah menjadi ringkasan, peringkat, dan pola.</td>
+</tr>
+<tr>
+<td>DataFrame</td>
+<td>Struktur tabel di Spark.</td>
+<td>Seperti spreadsheet besar berisi baris dan kolom, tetapi diproses oleh mesin data.</td>
+</tr>
+<tr>
+<td>Temp View</td>
+<td>Tampilan sementara agar DataFrame bisa di-query dengan SQL.</td>
+<td>Seperti memberi nama sementara pada tabel agar mudah ditanya dengan bahasa query.</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>Bahasa query untuk mengambil dan menghitung data.</td>
+<td>Seperti bahasa bertanya ke tabel: rata-ratanya berapa, kelompoknya apa, urutannya bagaimana.</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>Alamat API yang bisa dipanggil frontend.</td>
+<td>Seperti alamat loket tertentu. <code>/api/data</code> adalah loket untuk mengambil data dashboard.</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>Bagian aplikasi yang dilihat pengguna.</td>
+<td>Tampilan dashboard di browser: kartu, grafik, warna, dan teks.</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Bagian aplikasi yang menyiapkan data untuk frontend.</td>
+<td>Dapur belakang yang membaca file, menyusun response, lalu mengirimkannya ke tampilan.</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>Jalur cadangan ketika jalur utama gagal.</td>
+<td>Seperti ban serep. Jika API atau akses utama bermasalah, sistem tetap bisa berjalan dengan cara alternatif.</td>
+</tr>
+<tr>
+<td>Mirror JSON</td>
+<td>Salinan data ringkas dalam file JSON lokal.</td>
+<td>Seperti fotokopi data terbaru agar dashboard cepat membaca tanpa membuka gudang besar langsung.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="matriks-komponen-utama">Matriks Komponen Utama</h2>
+<table>
+<thead>
+<tr>
+<th>Lapisan</th>
+<th>Komponen</th>
+<th>Tanggung Jawab</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sumber data</td>
+<td>AQICN API</td>
+<td>Memberi data kualitas udara nyata.</td>
+<td>Payload AQI.</td>
+</tr>
+<tr>
+<td>Sumber data</td>
+<td>Simulator AQI</td>
+<td>Memberi data cadangan saat API tidak tersedia.</td>
+<td>Payload AQI simulator.</td>
+</tr>
+<tr>
+<td>Sumber data</td>
+<td>RSS Feeds</td>
+<td>Memberi konteks berita lingkungan.</td>
+<td>Entry RSS.</td>
+</tr>
+<tr>
+<td>Ingestion</td>
+<td><code>producer_api.py</code></td>
+<td>Polling AQI dan kirim ke Kafka.</td>
+<td>Message <code>airquality-api</code>.</td>
+</tr>
+<tr>
+<td>Ingestion</td>
+<td><code>producer_rss.py</code></td>
+<td>Parse RSS, filter keyword, dedup.</td>
+<td>Message <code>airquality-rss</code>.</td>
+</tr>
+<tr>
+<td>Broker</td>
+<td>Kafka</td>
+<td>Menahan dan memisahkan aliran data.</td>
+<td>Topic log.</td>
+</tr>
+<tr>
+<td>Sink</td>
+<td><code>consumer_to_hdfs.py</code></td>
+<td>Baca Kafka, buffer, flush, mirror.</td>
+<td>File HDFS dan JSON dashboard.</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>HDFS</td>
+<td>Menyimpan data historis.</td>
+<td>NDJSON raw dan Parquet hasil.</td>
+</tr>
+<tr>
+<td>Analytics</td>
+<td>Spark Notebook</td>
+<td>Menghitung distribusi, jam puncak, ranking.</td>
+<td>Parquet dan <code>spark_results.json</code>.</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td>Flask Dashboard</td>
+<td>Menyajikan API dan halaman web.</td>
+<td>Dashboard browser.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-peta-besar-sistem">1. Peta Besar Sistem</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#dbeafe","primaryTextColor":"#0f172a","primaryBorderColor":"#2563eb","lineColor":"#334155","secondaryColor":"#dcfce7","tertiaryColor":"#fef3c7"}}}%%
+flowchart LR
+    subgraph Sumber["Sumber Data Eksternal"]
+        AQICN["AQICN API<br/>Data AQI real-time"]
+        SIM["Simulator AQI<br/>Fallback offline"]
+        RSS["RSS Feeds<br/>Detik, Tempo, Kompas"]
+    end
+
+    subgraph Ingest["Lapisan Ingestion Python"]
+        APIProducer["producer_api.py<br/>Polling AQI<br/>Key: city_slug"]
+        RSSProducer["producer_rss.py<br/>Parse RSS<br/>Dedup MD5 URL"]
+    end
+
+    subgraph Kafka["Apache Kafka"]
+        TopicAPI[("topic: airquality-api")]
+        TopicRSS[("topic: airquality-rss")]
+    end
+
+    subgraph Sink["Consumer dan Sink"]
+        Consumer["consumer_to_hdfs.py<br/>2 thread<br/>buffer<br/>manual commit"]
+        Mirror["dashboard/data<br/>live_api.json<br/>live_rss.json"]
+    end
+
+    subgraph Lake["Hadoop HDFS"]
+        HDFSAPI[("/data/airquality/api")]
+        HDFSRSS[("/data/airquality/rss")]
+        HDFSResult[("/data/airquality/hasil")]
+    end
+
+    subgraph Analytics["Apache Spark"]
+        Notebook["spark/analysis.ipynb<br/>3 analisis utama"]
+        SparkJSON["spark_results.json"]
+    end
+
+    subgraph Presentation["Presentation Layer"]
+        Flask["dashboard/app.py<br/>/api/data<br/>/api/status"]
+        UI["index.html + style.css<br/>Chart.js<br/>auto-refresh 30s"]
+        Browser["Browser pengguna"]
+    end
+
+    AQICN --> APIProducer
+    SIM --> APIProducer
+    RSS --> RSSProducer
+    APIProducer --> TopicAPI
+    RSSProducer --> TopicRSS
+    TopicAPI --> Consumer
+    TopicRSS --> Consumer
+    Consumer --> HDFSAPI
+    Consumer --> HDFSRSS
+    Consumer --> Mirror
+    HDFSAPI --> Notebook
+    Notebook --> HDFSResult
+    Notebook --> SparkJSON
+    Mirror --> Flask
+    SparkJSON --> Flask
+    Flask --> UI
+    UI --> Browser
+
+    classDef source fill:#e0f2fe,stroke:#0284c7,color:#0f172a,stroke-width:2px;
+    classDef ingest fill:#dcfce7,stroke:#16a34a,color:#0f172a,stroke-width:2px;
+    classDef kafka fill:#fef3c7,stroke:#d97706,color:#0f172a,stroke-width:2px;
+    classDef sink fill:#fae8ff,stroke:#9333ea,color:#0f172a,stroke-width:2px;
+    classDef hdfs fill:#fee2e2,stroke:#dc2626,color:#0f172a,stroke-width:2px;
+    classDef spark fill:#ede9fe,stroke:#7c3aed,color:#0f172a,stroke-width:2px;
+    classDef presentation fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-width:2px;
+
+    class AQICN,SIM,RSS source;
+    class APIProducer,RSSProducer ingest;
+    class TopicAPI,TopicRSS kafka;
+    class Consumer,Mirror sink;
+    class HDFSAPI,HDFSRSS,HDFSResult hdfs;
+    class Notebook,SparkJSON spark;
+    class Flask,UI,Browser presentation;
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini adalah peta utama seluruh sistem. Diagram ini menjelaskan semua lapisan dari sumber data sampai dashboard yang dibuka pengguna.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Sumber Data Eksternal</code></td>
+<td>Berisi <code>AQICN API</code>, <code>Simulator AQI</code>, dan <code>RSS Feeds</code>. AQICN adalah sumber data kualitas udara nyata. Simulator adalah cadangan jika token kosong atau API gagal. RSS Feeds adalah sumber konteks berita dari Detik, Tempo, dan Kompas.</td>
+</tr>
+<tr>
+<td><code>Lapisan Ingestion Python</code></td>
+<td>Berisi <code>producer_api.py</code> dan <code>producer_rss.py</code>. Ingestion berarti tahap memasukkan data ke sistem; secara sederhana ini adalah pintu masuk yang mengambil data dari luar, membentuk payload JSON, lalu mengirimkannya ke Kafka.</td>
+</tr>
+<tr>
+<td><code>Apache Kafka</code></td>
+<td>Berisi topic <code>airquality-api</code> dan <code>airquality-rss</code>. Kafka menjadi antrian data agar producer tidak langsung bergantung pada HDFS atau dashboard; bayangkan Kafka sebagai ruang tunggu pesan agar pengirim dan penerima tidak harus aktif pada waktu yang sama.</td>
+</tr>
+<tr>
+<td><code>Consumer dan Sink</code></td>
+<td>Berisi <code>consumer_to_hdfs.py</code> dan mirror <code>dashboard/data</code>. Consumer membaca Kafka, melakukan buffer, menulis ke HDFS, dan membuat file JSON lokal untuk dashboard. Sink berarti tujuan akhir penulisan data, seperti saluran pembuangan yang mengarahkan data ke tempat penyimpanan.</td>
+</tr>
+<tr>
+<td><code>Hadoop HDFS</code></td>
+<td>Berisi path <code>/data/airquality/api</code>, <code>/data/airquality/rss</code>, dan <code>/data/airquality/hasil</code>. Ini adalah gudang data historis yang menyimpan catatan lama, bukan hanya data terbaru.</td>
+</tr>
+<tr>
+<td><code>Apache Spark</code></td>
+<td>Berisi <code>spark/analysis.ipynb</code> dan <code>spark_results.json</code>. Spark membaca data historis dari HDFS, menghitung analisis, lalu menulis hasil; secara non-teknis Spark adalah mesin pengolah yang membuat data mentah menjadi ringkasan yang bisa dipahami.</td>
+</tr>
+<tr>
+<td><code>Presentation Layer</code></td>
+<td>Berisi <code>dashboard/app.py</code>, <code>index.html + style.css</code>, dan browser pengguna. Layer ini mengubah data hasil pipeline menjadi halaman dashboard, yaitu bagian yang akhirnya dilihat manusia.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>AQICN dan Simulator mengarah ke <code>producer_api.py</code> karena keduanya adalah sumber alternatif untuk data AQI. AQICN adalah sumber nyata, sedangkan simulator adalah sumber tiruan yang menjaga demo tetap berjalan.</li>
+<li>RSS Feeds mengarah ke <code>producer_rss.py</code> karena berita memiliki bentuk data berbeda dari AQI, sehingga perlu jalur pengolahan sendiri.</li>
+<li>Dua producer mengarah ke topic Kafka yang berbeda agar aliran angka AQI dan aliran berita tidak bercampur. Topic dapat dijelaskan sebagai jalur antrean terpisah.</li>
+<li>Dua topic Kafka mengarah ke <code>consumer_to_hdfs.py</code> karena satu consumer membaca kedua topic dengan dua thread. Thread berarti jalur kerja paralel di dalam satu program, seperti dua petugas yang bekerja bersamaan.</li>
+<li>Consumer mengarah ke HDFS dan mirror dashboard karena ia menulis data historis sekaligus snapshot cepat. Snapshot berarti salinan keadaan terbaru pada saat tertentu.</li>
+<li>Spark membaca HDFS API, lalu menulis hasil ke HDFS hasil dan <code>spark_results.json</code>. Artinya data mentah dari gudang diolah menjadi hasil ringkas untuk analisis dan dashboard.</li>
+<li>Flask membaca mirror live dan hasil Spark, lalu frontend mengambil data dari Flask. Flask berperan sebagai pelayan data, sedangkan frontend adalah layar yang memvisualisasikan data tersebut.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Inti diagram ini adalah pemisahan tanggung jawab. Producer mengambil data, Kafka menahan data seperti ruang tunggu, consumer menyimpan data, HDFS mengarsipkan data seperti gudang besar, Spark menganalisis data seperti mesin pengolah, dan dashboard menyajikan data dalam bentuk yang mudah dibaca manusia.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Diagram ini menunjukkan bahwa sistem tidak dibuat sebagai satu program besar, tetapi sebagai rangkaian komponen dengan tugas masing-masing. Data kualitas udara dan berita diambil oleh producer, ditaruh dulu di Kafka sebagai antrian pesan, diambil consumer untuk disimpan ke HDFS sebagai gudang historis, lalu dianalisis Spark dan akhirnya ditampilkan di dashboard Flask agar bisa dibaca pengguna.</p>
+</blockquote>
+<hr>
+<h2 id="2-topologi-deployment-lokal">2. Topologi Deployment Lokal</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#f8fafc","primaryBorderColor":"#0f172a","lineColor":"#334155"}}}%%
+flowchart TB
+    subgraph Host["Host Linux / WSL2"]
+        Venv["Python .venv<br/>requirements.txt"]
+        Producers["Python Producers<br/>producer_api.py<br/>producer_rss.py"]
+        ConsumerPy["Python Consumer<br/>consumer_to_hdfs.py"]
+        NotebookHost["Jupyter / Spark Notebook<br/>analysis.ipynb"]
+        DashboardHost["Flask Dashboard<br/>dashboard/app.py<br/>port 5000"]
+    end
+
+    subgraph KafkaCompose["docker-compose-kafka.yml"]
+        ZK["zookeeper<br/>2181"]
+        Broker["kafka-broker<br/>9092 external<br/>29092 internal"]
+    end
+
+    subgraph HadoopCompose["docker-compose-hadoop.yml"]
+        NN["namenode<br/>9870 Web UI<br/>9000 RPC"]
+        DN1["datanode1<br/>9864"]
+        DN2["datanode2<br/>9865 -> 9864"]
+        DN3["datanode3<br/>9866 -> 9864"]
+        RM["resourcemanager<br/>8088"]
+        NM["nodemanager"]
+    end
+
+    Venv --> Producers
+    Venv --> ConsumerPy
+    Venv --> NotebookHost
+    Venv --> DashboardHost
+    Producers -->|"localhost:9092"| Broker
+    ConsumerPy -->|"localhost:9092"| Broker
+    ConsumerPy -->|"docker exec namenode"| NN
+    NotebookHost -->|"hdfs://localhost:9000"| NN
+    NotebookHost -->|"fallback docker exec"| NN
+    DashboardHost -->|"reads JSON"| Venv
+
+    ZK --> Broker
+    NN --> DN1
+    NN --> DN2
+    NN --> DN3
+    RM --> NM
+    RM --> NN
+
+    classDef host fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#0f172a;
+    classDef kafka fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a;
+    classDef hadoop fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a;
+
+    class Venv,Producers,ConsumerPy,NotebookHost,DashboardHost host;
+    class ZK,Broker kafka;
+    class NN,DN1,DN2,DN3,RM,NM hadoop;
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan bagaimana aplikasi berjalan di mesin lokal Linux atau WSL2.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Host Linux / WSL2</code></td>
+<td>Menjalankan virtual environment Python, producer, consumer, notebook Spark, dan dashboard Flask. Host berarti mesin tempat kita menjalankan program utama proyek.</td>
+</tr>
+<tr>
+<td><code>Python .venv</code></td>
+<td>Tempat dependency dari <code>requirements.txt</code> diinstal. Dependency adalah library yang dibutuhkan program, sedangkan <code>.venv</code> adalah ruang kerja Python terpisah agar paket proyek tidak bercampur dengan sistem lain.</td>
+</tr>
+<tr>
+<td><code>Python Producers</code></td>
+<td>Proses <code>producer_api.py</code> dan <code>producer_rss.py</code> berjalan di host, bukan di container. Artinya logika pengambilan data dijalankan langsung dari lingkungan Python lokal.</td>
+</tr>
+<tr>
+<td><code>Python Consumer</code></td>
+<td>Proses <code>consumer_to_hdfs.py</code> juga berjalan di host dan mengakses Kafka serta HDFS. Consumer adalah pengambil pesan dari Kafka yang kemudian menyimpannya ke gudang data.</td>
+</tr>
+<tr>
+<td><code>Jupyter / Spark Notebook</code></td>
+<td>Notebook dijalankan dari host dan membaca HDFS melalui <code>hdfs://localhost:9000</code> atau fallback docker exec. Notebook adalah catatan kerja interaktif untuk menjalankan analisis langkah demi langkah.</td>
+</tr>
+<tr>
+<td><code>Flask Dashboard</code></td>
+<td>Dashboard Flask berjalan pada host dan membuka port 5000. Port adalah pintu akses jaringan; dalam demo, browser membuka pintu ini untuk melihat dashboard.</td>
+</tr>
+<tr>
+<td><code>docker-compose-kafka.yml</code></td>
+<td>Menjalankan Zookeeper dan Kafka broker. Docker Compose adalah cara menyalakan beberapa service sekaligus dari satu file konfigurasi.</td>
+</tr>
+<tr>
+<td><code>docker-compose-hadoop.yml</code></td>
+<td>Menjalankan NameNode, tiga DataNode, ResourceManager, dan NodeManager. Komponen ini membentuk ekosistem Hadoop: ada pengatur file, penyimpan data, dan pengatur resource.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>Producer dan consumer mengakses Kafka melalui <code>localhost:9092</code> karena Kafka membuka alamat yang bisa dicapai dari host. <code>localhost</code> berarti komputer kita sendiri, sedangkan <code>9092</code> adalah nomor pintunya.</li>
+<li>Consumer menulis HDFS menggunakan <code>docker exec namenode</code> sebagai strategi default yang stabil di WSL2. <code>docker exec</code> berarti menjalankan perintah dari dalam container, seperti masuk sebentar ke mesin Hadoop untuk menaruh file.</li>
+<li>Notebook mencoba membaca HDFS melalui <code>hdfs://localhost:9000</code>, lalu memakai fallback jika hostname DataNode bermasalah. Fallback adalah jalur cadangan agar analisis tetap bisa membaca data meskipun akses langsung mengalami kendala.</li>
+<li>Dashboard membaca file JSON lokal di folder <code>dashboard/data</code>, bukan langsung membaca Kafka atau HDFS. Ini membuat dashboard lebih ringan karena cukup membaca salinan ringkas, bukan membuka sistem penyimpanan besar.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Diagram ini penting untuk menjelaskan batas antara proses host dan container. Infrastruktur berat berjalan di Docker, sedangkan logika proyek berjalan sebagai Python lokal.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Diagram ini menjelaskan pembagian lokasi jalan program. Kafka dan Hadoop berjalan di Docker karena keduanya adalah infrastruktur berat, sedangkan producer, consumer, notebook, dan dashboard berjalan di Python lokal agar mudah dikontrol saat demo. Dengan cara ini, saya bisa menjelaskan mana yang menjadi mesin infrastruktur dan mana yang menjadi logika aplikasi.</p>
+</blockquote>
+<hr>
+<h2 id="3-sequence-diagram-ingestion-aqi">3. Sequence Diagram Ingestion AQI</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","actorBkg":"#dbeafe","actorBorder":"#2563eb","activationBkgColor":"#fef3c7","activationBorderColor":"#d97706","sequenceNumberColor":"#0f172a"}}}%%
+sequenceDiagram
+    autonumber
+    participant Timer as Polling Timer
+    participant Producer as producer_api.py
+    participant AQICN as AQICN API
+    participant Sim as Simulator
+    participant Kafka as Kafka topic airquality-api
+
+    Timer->>Producer: trigger setiap POLL_INTERVAL_SEC
+    loop Untuk setiap kota
+        Producer->>AQICN: GET /feed/{city_slug}?token=...
+        alt AQICN sukses dan valid
+            AQICN-->>Producer: payload AQI
+            Producer->>Producer: normalisasi field
+        else AQICN gagal / token kosong / FORCE_SIMULATOR
+            Producer->>Sim: simulate_event(city)
+            Sim-->>Producer: payload simulator
+        end
+        Producer->>Producer: tambah city, city_slug, timestamp_ingest
+        Producer->>Kafka: send(key=city_slug, value=json)
+    end
+    Producer->>Kafka: flush(timeout=15)
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan urutan kejadian saat data AQI dikirim ke Kafka.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Polling Timer</code></td>
+<td>Pemicu periodik berdasarkan <code>POLL_INTERVAL_SEC</code>, default 900 detik. Polling berarti program mengecek data secara berkala, seperti seseorang yang melihat termometer setiap beberapa menit.</td>
+</tr>
+<tr>
+<td><code>producer_api.py</code></td>
+<td>Program utama yang mengatur pengambilan data AQI, fallback simulator, normalisasi field, dan pengiriman Kafka. Normalisasi field berarti menyamakan nama dan bentuk kolom agar data dari berbagai kondisi tetap rapi.</td>
+</tr>
+<tr>
+<td><code>AQICN API</code></td>
+<td>Sumber data kualitas udara nyata jika token tersedia dan response valid. Token adalah kunci akses ke layanan API.</td>
+</tr>
+<tr>
+<td><code>Simulator</code></td>
+<td>Sumber cadangan jika token kosong, request gagal, atau <code>FORCE_SIMULATOR=1</code>. Simulator membuat data tiruan yang masuk akal supaya alur sistem tetap dapat ditunjukkan.</td>
+</tr>
+<tr>
+<td><code>Kafka topic airquality-api</code></td>
+<td>Topic tujuan untuk seluruh event AQI. Topic ini seperti jalur khusus untuk paket data kualitas udara.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>Timer memicu producer sesuai interval. Interval adalah jarak waktu antar pengecekan, sehingga sistem tidak terus-menerus meminta data tanpa jeda.</li>
+<li>Producer melakukan loop untuk setiap kota: Surabaya, Malang, Sidoarjo, Gresik, dan Mojokerto. Loop berarti proses yang diulang untuk daftar kota satu per satu.</li>
+<li>Producer mencoba request ke AQICN dengan slug kota. Request berarti permintaan data, sedangkan slug adalah nama kota dalam format alamat yang konsisten, misalnya tanpa spasi.</li>
+<li>Jika AQICN sukses, payload dinormalisasi. Payload adalah isi data yang diterima, dan normalisasi berarti merapikan bentuknya agar kolomnya seragam.</li>
+<li>Jika AQICN gagal, simulator membuat payload realistis. Ini menjaga presentasi tetap berjalan meskipun sumber eksternal bermasalah.</li>
+<li>Producer menambahkan <code>city</code>, <code>city_slug</code>, dan <code>timestamp_ingest</code>. <code>timestamp_ingest</code> adalah waktu saat data masuk ke sistem, seperti stempel waktu penerimaan.</li>
+<li>Producer mengirim message ke Kafka memakai key <code>city_slug</code>. Message adalah paket data, dan key adalah label paket agar data per kota mudah dikenali.</li>
+<li>Setelah satu siklus, producer melakukan flush agar message benar-benar dikirim. Flush di producer berarti memastikan semua pesan yang masih tertahan di memori benar-benar keluar ke Kafka.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Ingestion AQI dirancang tahan gangguan. Demo tidak berhenti hanya karena API eksternal tidak tersedia.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Pada bagian ini, producer API bekerja seperti petugas yang mengecek kualitas udara tiap kota secara berkala. Jika AQICN tersedia, sistem memakai data nyata; jika tidak, simulator menjadi cadangan. Setelah data dirapikan dan diberi label kota serta waktu masuk, data dikirim ke Kafka agar tahap berikutnya bisa mengambilnya tanpa harus bergantung langsung ke API eksternal.</p>
+</blockquote>
+<hr>
+<h2 id="4-sequence-diagram-ingestion-rss">4. Sequence Diagram Ingestion RSS</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","actorBkg":"#dcfce7","actorBorder":"#16a34a","activationBkgColor":"#fae8ff","activationBorderColor":"#9333ea"}}}%%
+sequenceDiagram
+    autonumber
+    participant Timer as Polling Timer
+    participant Producer as producer_rss.py
+    participant Feed as RSS Feed
+    participant Seen as seen_ids.json
+    participant Kafka as Kafka topic airquality-rss
+
+    Timer->>Producer: trigger setiap POLL_INTERVAL_SEC_RSS
+    Producer->>Seen: load_seen_ids()
+    loop Untuk setiap RSS_FEEDS
+        Producer->>Feed: feedparser.parse(url)
+        Feed-->>Producer: entries
+        Producer->>Producer: strip_html(summary)
+        Producer->>Producer: hash_url(link)
+        Producer->>Seen: cek id sudah pernah dikirim
+        alt berita relevan keyword
+            Producer->>Kafka: send(key=id, value=json)
+            Producer->>Seen: add id
+        else tidak ada relevan tetapi fallback aktif
+            Producer->>Kafka: send top-N fallback
+            Producer->>Seen: add id
+        end
+    end
+    Producer->>Kafka: flush(timeout=15)
+    Producer->>Seen: save_seen_ids() atomic
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan bagaimana berita RSS dibaca, difilter, didedup, lalu dikirim ke Kafka.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Polling Timer</code></td>
+<td>Pemicu periodik berdasarkan <code>POLL_INTERVAL_SEC_RSS</code>, default 300 detik. Artinya berita dicek berkala, bukan hanya sekali saat program dinyalakan.</td>
+</tr>
+<tr>
+<td><code>producer_rss.py</code></td>
+<td>Program yang membaca feed, membersihkan summary, menghitung hash link, dan mengirim message. Hash link adalah sidik jari unik dari URL berita agar berita yang sama mudah dikenali.</td>
+</tr>
+<tr>
+<td><code>RSS Feed</code></td>
+<td>Sumber berita dari URL feed yang didefinisikan di default kode atau <code>RSS_FEEDS</code>. RSS feed dapat dipahami sebagai daftar berita yang disediakan situs untuk dibaca otomatis.</td>
+</tr>
+<tr>
+<td><code>seen_ids.json</code></td>
+<td>File runtime yang menyimpan ID berita yang sudah pernah dikirim. Runtime berarti file ini dipakai saat program berjalan, seperti buku catatan berita yang sudah pernah diproses.</td>
+</tr>
+<tr>
+<td><code>Kafka topic airquality-rss</code></td>
+<td>Topic tujuan event RSS. Topic ini adalah jalur khusus untuk paket data berita, terpisah dari data angka AQI.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>Producer memuat <code>seen_ids.json</code> saat siklus dimulai. File ini seperti daftar ceklis berita yang sudah pernah dikirim.</li>
+<li>Producer membaca setiap feed dengan <code>feedparser</code>. <code>feedparser</code> adalah library yang membantu membaca format RSS agar program tidak perlu membongkar teks mentah secara manual.</li>
+<li>Setiap entry dibersihkan dari HTML dan dibuat ID berdasarkan MD5 link. HTML adalah format tampilan web, sedangkan MD5 di sini dipakai sebagai sidik jari pendek untuk membedakan URL berita.</li>
+<li>Jika ID sudah ada, berita dilewati agar tidak duplikat. Duplikat berarti berita yang sama muncul lebih dari sekali.</li>
+<li>Jika berita relevan dengan keyword, berita dikirim ke Kafka. Keyword adalah kata kunci seperti polusi, udara, atau lingkungan yang membantu memilih berita yang sesuai topik.</li>
+<li>Jika tidak ada yang relevan, fallback Top-N dapat dikirim untuk menjaga dashboard tetap terisi. Top-N berarti mengambil beberapa berita teratas sebagai cadangan.</li>
+<li>Setelah kirim, ID berita disimpan kembali secara atomic. Atomic berarti penyimpanan dilakukan secara utuh, sehingga file catatan tidak mudah rusak di tengah proses.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>RSS ingestion menyeimbangkan relevansi dan kebutuhan demo. Sistem mencoba memilih berita lingkungan, tetapi tetap punya fallback agar panel berita tidak kosong.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Pada jalur RSS, sistem bukan hanya mengambil semua berita mentah. Berita dibersihkan dari HTML, diberi ID unik dari link, dicek apakah sudah pernah muncul, lalu difilter berdasarkan kata kunci lingkungan. Jika tidak ada berita yang cocok, ada fallback Top-N agar dashboard tetap memiliki konteks berita saat demo.</p>
+</blockquote>
+<hr>
+<h2 id="5-sequence-diagram-consumer-ke-hdfs">5. Sequence Diagram Consumer ke HDFS</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","actorBkg":"#fef3c7","actorBorder":"#d97706","activationBkgColor":"#fee2e2","activationBorderColor":"#dc2626"}}}%%
+sequenceDiagram
+    autonumber
+    participant KafkaAPI as topic airquality-api
+    participant KafkaRSS as topic airquality-rss
+    participant Consumer as consumer_to_hdfs.py
+    participant Buffer as In-memory Buffer
+    participant HDFS as Hadoop HDFS
+    participant Mirror as dashboard/data
+
+    par Thread API
+        KafkaAPI->>Consumer: poll messages
+        Consumer->>Buffer: append API records
+    and Thread RSS
+        KafkaRSS->>Consumer: poll messages
+        Consumer->>Buffer: append RSS records
+    end
+
+    alt BUFFER_MAX_RECORDS tercapai
+        Consumer->>HDFS: write NDJSON batch
+        Consumer->>Mirror: update live_api/live_rss
+        Consumer->>KafkaAPI: commit offset
+        Consumer->>KafkaRSS: commit offset
+    else BUFFER_FLUSH_SEC tercapai
+        Consumer->>HDFS: write NDJSON batch
+        Consumer->>Mirror: update live_api/live_rss
+        Consumer->>KafkaAPI: commit offset
+        Consumer->>KafkaRSS: commit offset
+    else HDFS write gagal
+        Consumer->>Buffer: pertahankan buffer
+        Consumer-->>KafkaAPI: offset belum commit
+        Consumer-->>KafkaRSS: offset belum commit
+    end
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan bagaimana consumer membaca dua topic Kafka dan menyimpan data dengan aman.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>topic airquality-api</code></td>
+<td>Topic berisi event AQI. Topic ini adalah jalur antrean khusus untuk data angka kualitas udara.</td>
+</tr>
+<tr>
+<td><code>topic airquality-rss</code></td>
+<td>Topic berisi event RSS. Topic ini adalah jalur antrean khusus untuk berita agar tidak bercampur dengan data AQI.</td>
+</tr>
+<tr>
+<td><code>consumer_to_hdfs.py</code></td>
+<td>Consumer yang menjalankan dua thread, satu untuk API dan satu untuk RSS. Dua thread berarti dua jalur kerja berjalan paralel agar kedua jenis data bisa diproses bersamaan.</td>
+</tr>
+<tr>
+<td><code>In-memory Buffer</code></td>
+<td>Tempat menampung record sementara sebelum ditulis sebagai batch. In-memory berarti disimpan sementara di memori program, seperti keranjang sementara sebelum barang dipindahkan ke gudang.</td>
+</tr>
+<tr>
+<td><code>Hadoop HDFS</code></td>
+<td>Tujuan penyimpanan historis. HDFS adalah gudang besar untuk menyimpan data dalam jangka panjang.</td>
+</tr>
+<tr>
+<td><code>dashboard/data</code></td>
+<td>Tujuan mirror JSON untuk dashboard. Mirror JSON adalah salinan kecil data terbaru agar dashboard tidak perlu membaca HDFS langsung.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>Thread API membaca topic <code>airquality-api</code>. Thread dapat dijelaskan sebagai jalur kerja di dalam program yang fokus pada data AQI.</li>
+<li>Thread RSS membaca topic <code>airquality-rss</code>. Jalur ini dipisahkan agar berita tetap diproses meskipun aliran AQI sedang ramai.</li>
+<li>Record dari dua aliran masuk ke buffer masing-masing. Record berarti satu baris atau satu kejadian data; buffer adalah wadah sementara sebelum data dipindahkan ke penyimpanan tetap.</li>
+<li>Flush terjadi jika <code>BUFFER_MAX_RECORDS</code> tercapai atau <code>BUFFER_FLUSH_SEC</code> tercapai. Flush berarti mengosongkan buffer ke penyimpanan. <code>BUFFER_MAX_RECORDS</code> adalah batas jumlah record dalam buffer, sedangkan <code>BUFFER_FLUSH_SEC</code> adalah batas waktu menunggu. Jadi data ditulis ketika keranjang sudah cukup penuh atau ketika waktu tunggu sudah habis.</li>
+<li>Pada flush sukses, data ditulis ke HDFS sebagai NDJSON. NDJSON berarti setiap baris file adalah satu JSON, sehingga data mudah ditambahkan dan dibaca kembali secara bertahap.</li>
+<li>Mirror dashboard diperbarui agar dashboard punya snapshot terbaru. Snapshot adalah salinan kondisi terkini yang cepat dibuka oleh halaman web.</li>
+<li>Offset Kafka baru di-commit setelah write sukses. Offset adalah nomor posisi pesan di Kafka, sedangkan commit adalah tanda bahwa pesan sudah benar-benar aman diproses.</li>
+<li>Jika write gagal, buffer dipertahankan dan offset tidak di-commit. Artinya sistem tidak berpura-pura berhasil; data tetap ditahan agar bisa dicoba lagi.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Desain commit setelah flush mencegah data dianggap selesai sebelum benar-benar tersimpan. Secara non-teknis, sistem baru memberi tanda centang ketika paket sudah sampai gudang, bukan saat paket baru diambil dari ruang tunggu.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Bagian consumer ini penting karena menjelaskan keamanan penyimpanan data. Data dari Kafka tidak langsung dicentang selesai. Data masuk dulu ke buffer, lalu di-flush ke HDFS ketika jumlahnya cukup atau waktunya sudah habis. Setelah penulisan berhasil, barulah offset di-commit. Dengan cara ini, jika HDFS gagal ditulis, data belum dianggap selesai dan masih bisa diproses ulang.</p>
+</blockquote>
+<hr>
+<h2 id="6-struktur-penyimpanan-hdfs">6. Struktur Penyimpanan HDFS</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#fee2e2","primaryBorderColor":"#dc2626","lineColor":"#334155"}}}%%
+flowchart TB
+    Root["/data/airquality"]
+    API["api/<br/>YYYY-MM-DD_HH-MM-SS.json<br/>NDJSON AQI"]
+    RSS["rss/<br/>YYYY-MM-DD_HH-MM-SS.json<br/>NDJSON berita"]
+    Hasil["hasil/"]
+    Dist["distribusi_kategori/<br/>Parquet"]
+    Avg["avg_aqi_per_jam/<br/>Parquet"]
+    Rank["ranking_kota/<br/>Parquet"]
+
+    Root --> API
+    Root --> RSS
+    Root --> Hasil
+    Hasil --> Dist
+    Hasil --> Avg
+    Hasil --> Rank
+
+    classDef root fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#0f172a;
+    classDef raw fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#0f172a;
+    classDef result fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a;
+
+    class Root root;
+    class API,RSS raw;
+    class Hasil,Dist,Avg,Rank result;
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan struktur folder HDFS yang digunakan proyek.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/data/airquality</code></td>
+<td>Root folder data lake proyek. Root berarti folder induk, sedangkan data lake adalah tempat besar untuk menyimpan data mentah dan hasil olahan.</td>
+</tr>
+<tr>
+<td><code>api</code></td>
+<td>Folder raw data AQI dalam file NDJSON per batch. Raw data berarti data masih mentah, belum diringkas atau dihitung ulang.</td>
+</tr>
+<tr>
+<td><code>rss</code></td>
+<td>Folder raw data RSS dalam file NDJSON per batch. Folder ini menyimpan berita mentah yang sudah masuk pipeline.</td>
+</tr>
+<tr>
+<td><code>hasil</code></td>
+<td>Folder untuk output Spark. Output berarti hasil akhir dari proses analisis.</td>
+</tr>
+<tr>
+<td><code>distribusi_kategori</code></td>
+<td>Output Parquet analisis distribusi kategori AQI per kota. Distribusi berarti pembagian jumlah data pada kategori tertentu, misalnya berapa kali kota masuk kategori baik atau sedang.</td>
+</tr>
+<tr>
+<td><code>avg_aqi_per_jam</code></td>
+<td>Output Parquet analisis rata-rata AQI per kota per jam. Rata-rata per jam membantu melihat pola waktu, bukan hanya satu angka terbaru.</td>
+</tr>
+<tr>
+<td><code>ranking_kota</code></td>
+<td>Output Parquet analisis ranking kota berdasarkan AQI. Ranking berarti urutan kota dari kualitas udara yang lebih buruk ke lebih baik sesuai nilai AQI.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li><code>/data/airquality</code> menjadi akar semua data proyek. Semua file disatukan di bawah folder induk agar struktur penyimpanan mudah dicari.</li>
+<li>Consumer menulis data mentah ke <code>api</code> dan <code>rss</code>. Data mentah disimpan apa adanya agar masih bisa diaudit atau dianalisis ulang.</li>
+<li>Spark menulis data hasil olahan ke <code>hasil</code>. Hasil olahan adalah data yang sudah dihitung menjadi ringkasan, seperti distribusi kategori dan ranking kota.</li>
+<li>Tiga subfolder hasil memisahkan output analisis agar mudah diverifikasi. Verifikasi berarti memeriksa apakah hasil yang ditampilkan dashboard benar-benar berasal dari file analisis yang jelas.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Struktur ini memisahkan raw data dan processed data. Raw data adalah catatan asli, sedangkan processed data adalah data yang sudah dimasak menjadi informasi. Pemisahan ini membuat data lake lebih mudah dipahami dan lebih mudah diperiksa ulang.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Struktur HDFS ini saya jelaskan seperti gudang dengan beberapa rak. Rak <code>api</code> menyimpan data AQI mentah, rak <code>rss</code> menyimpan berita mentah, dan rak <code>hasil</code> menyimpan data yang sudah dianalisis Spark. Dengan pemisahan ini, kita tahu mana data asli dan mana hasil olahan.</p>
+</blockquote>
+<hr>
+<h2 id="7-arsitektur-spark-analysis">7. Arsitektur Spark Analysis</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#ede9fe","primaryBorderColor":"#7c3aed","secondaryColor":"#dbeafe","lineColor":"#334155"}}}%%
+flowchart LR
+    HDFSAPI[("HDFS<br/>/data/airquality/api/*.json")]
+    ReadNative["Native read<br/>spark.read.json(hdfs://...)"]
+    Fallback["Fallback read<br/>WebHDFS list<br/>docker exec hdfs dfs -cat"]
+    Normalize["Normalize DataFrame<br/>city, aqi, event_ts, hour, category"]
+    View["Temp View<br/>airquality"]
+
+    A1["Analisis 1<br/>Distribusi kategori AQI"]
+    A2["Analisis 2<br/>Rata-rata AQI per jam<br/>Spark SQL"]
+    A3["Analisis 3<br/>Ranking kota terburuk"]
+
+    Parquet["HDFS hasil/<br/>3 folder Parquet"]
+    JSON["dashboard/data/spark_results.json"]
+
+    HDFSAPI --> ReadNative
+    ReadNative --> Normalize
+    HDFSAPI -. jika native gagal .-> Fallback
+    Fallback --> Normalize
+    Normalize --> View
+    View --> A1
+    View --> A2
+    View --> A3
+    A1 --> Parquet
+    A2 --> Parquet
+    A3 --> Parquet
+    A1 --> JSON
+    A2 --> JSON
+    A3 --> JSON
+
+    classDef input fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#0f172a;
+    classDef process fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#0f172a;
+    classDef output fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a;
+
+    class HDFSAPI input;
+    class ReadNative,Fallback,Normalize,View,A1,A2,A3 process;
+    class Parquet,JSON output;
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan jalur data di notebook Spark.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HDFS /data/airquality/api/*.json</code></td>
+<td>Input historis AQI yang sudah ditulis consumer. Input berarti bahan baku yang akan dibaca oleh Spark.</td>
+</tr>
+<tr>
+<td><code>Native read</code></td>
+<td>Percobaan baca langsung dengan <code>spark.read.json(hdfs://...)</code>. Native read berarti Spark membaca HDFS dengan cara standarnya.</td>
+</tr>
+<tr>
+<td><code>Fallback read</code></td>
+<td>Jalur cadangan menggunakan WebHDFS list dan <code>docker exec hdfs dfs -cat</code>. Jalur ini dipakai jika pembacaan standar bermasalah di lingkungan lokal.</td>
+</tr>
+<tr>
+<td><code>Normalize DataFrame</code></td>
+<td>Tahap pembentukan kolom <code>city</code>, <code>aqi</code>, <code>event_ts</code>, <code>hour</code>, dan <code>category</code>. DataFrame dapat dijelaskan seperti tabel besar, dan normalisasi berarti membuat kolomnya seragam.</td>
+</tr>
+<tr>
+<td><code>Temp View airquality</code></td>
+<td>View SQL agar analisis Spark SQL dapat dijalankan. Temp view adalah nama sementara untuk tabel agar mudah ditanya dengan SQL.</td>
+</tr>
+<tr>
+<td><code>Analisis 1</code></td>
+<td>Distribusi kategori AQI per kota. Ini menjawab pertanyaan: kota mana sering masuk kategori baik, sedang, atau tidak sehat.</td>
+</tr>
+<tr>
+<td><code>Analisis 2</code></td>
+<td>Rata-rata AQI per jam dengan Spark SQL. Ini menjawab pertanyaan: pada jam berapa kualitas udara cenderung naik atau turun.</td>
+</tr>
+<tr>
+<td><code>Analisis 3</code></td>
+<td>Ranking kota terburuk. Ini menjawab pertanyaan: kota mana yang paling perlu diperhatikan berdasarkan nilai AQI.</td>
+</tr>
+<tr>
+<td><code>HDFS hasil</code></td>
+<td>Output Parquet untuk verifikasi dan penyimpanan hasil. Parquet adalah format yang efisien untuk data analitik.</td>
+</tr>
+<tr>
+<td><code>spark_results.json</code></td>
+<td>Output JSON ringkas untuk dashboard. File ini adalah versi ringan dari hasil analisis agar dashboard cepat menampilkannya.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>Notebook mencoba native read lebih dulu. Artinya Spark membaca HDFS dengan cara normal yang paling langsung.</li>
+<li>Jika native read gagal, notebook memakai fallback tetapi sumber data tetap HDFS. Jadi jalur bacanya berubah, tetapi gudang datanya tetap sama.</li>
+<li>Data dinormalisasi agar semua analisis memakai schema konsisten. Schema adalah daftar kolom dan tipe data, seperti format baku pada tabel.</li>
+<li>Temp view <code>airquality</code> dibuat untuk query SQL. Query adalah pertanyaan ke data, misalnya menghitung rata-rata atau mengurutkan kota.</li>
+<li>Tiga analisis berjalan dari view yang sama. Ini membuat hasil analisis konsisten karena semua memakai sumber tabel yang sama.</li>
+<li>Hasil ditulis ke HDFS dan JSON dashboard. HDFS dipakai untuk arsip hasil, sedangkan JSON dipakai untuk tampilan cepat di dashboard.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Spark menjadi jembatan antara raw data historis dan insight yang siap ditampilkan. Raw data adalah bahan mentah, sedangkan insight adalah jawaban yang sudah lebih bermakna bagi pengambil keputusan.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Pada tahap Spark, data mentah dari HDFS diubah menjadi informasi. Notebook membaca data historis, merapikan kolom menjadi DataFrame, membuat temp view agar bisa dianalisis dengan SQL, lalu menghasilkan tiga keluaran: distribusi kategori, rata-rata per jam, dan ranking kota. Hasil lengkap disimpan ke HDFS, sedangkan ringkasannya ditaruh ke JSON untuk dashboard.</p>
+</blockquote>
+<hr>
+<h2 id="8-data-contract-api-dan-rss">8. Data Contract API dan RSS</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#f8fafc","primaryBorderColor":"#334155","lineColor":"#334155"}}}%%
+erDiagram
+    AIRQUALITY_API_EVENT {
+        string city
+        string city_slug
+        float aqi
+        float pm25
+        float pm10
+        float o3
+        float no2
+        float so2
+        float co
+        string dominent_pollutant
+        string station_name
+        string observed_at
+        string timestamp_ingest
+        string source
+    }
+
+    RSS_EVENT {
+        string id
+        string title
+        string link
+        string summary
+        string published
+        string source_feed
+        boolean relevant
+        string timestamp_ingest
+    }
+
+    SPARK_RESULT {
+        string generated_at
+        object analysis1
+        object analysis2
+        object analysis3
+        boolean _demo
+    }
+
+    DASHBOARD_PAYLOAD {
+        object spark
+        object api
+        object rss
+        object meta
+        string refreshed_at
+    }
+
+    AIRQUALITY_API_EVENT ||--o{ SPARK_RESULT : "diolah menjadi"
+    RSS_EVENT ||--o{ DASHBOARD_PAYLOAD : "ditampilkan sebagai konteks"
+    SPARK_RESULT ||--|| DASHBOARD_PAYLOAD : "dibaca oleh"
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan struktur data utama yang bergerak antar komponen.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AIRQUALITY_API_EVENT</code></td>
+<td>Kontrak event AQI yang dikirim producer API dan dibaca Spark. Kontrak berarti kesepakatan bentuk data, seperti formulir dengan kolom yang wajib dipahami semua komponen.</td>
+</tr>
+<tr>
+<td><code>RSS_EVENT</code></td>
+<td>Kontrak event berita yang dikirim producer RSS dan ditampilkan dashboard. Kontrak ini memastikan berita selalu punya judul, link, ringkasan, sumber, dan waktu.</td>
+</tr>
+<tr>
+<td><code>SPARK_RESULT</code></td>
+<td>Kontrak hasil analisis Spark untuk dashboard. Ini adalah format ringkasan hasil analisis agar dashboard tahu bagian mana yang harus ditampilkan.</td>
+</tr>
+<tr>
+<td><code>DASHBOARD_PAYLOAD</code></td>
+<td>Kontrak response <code>/api/data</code> yang dibaca frontend. Payload ini adalah paket jawaban dari backend ke layar pengguna.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>AIRQUALITY_API_EVENT diolah menjadi SPARK_RESULT. Artinya data AQI mentah berubah menjadi hasil analisis yang lebih mudah dibaca.</li>
+<li>RSS_EVENT masuk ke DASHBOARD_PAYLOAD sebagai konteks berita. Berita tidak dihitung seperti AQI, tetapi membantu menjelaskan kondisi lingkungan di sekitar data angka.</li>
+<li>SPARK_RESULT dibaca oleh DASHBOARD_PAYLOAD untuk panel analisis. Dashboard payload menggabungkan hasil Spark, data AQI terbaru, dan berita agar frontend menerima satu paket lengkap.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Data contract memastikan semua komponen punya ekspektasi field yang sama. Tanpa kontrak, producer bisa mengirim nama kolom berbeda dan consumer atau dashboard bisa salah membaca data.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Data contract ini seperti formulir standar. Producer, consumer, Spark, dan dashboard harus sepakat nama kolomnya apa dan isinya apa. Dengan begitu, ketika producer mengirim <code>aqi</code>, Spark tahu itu angka kualitas udara, dan dashboard tahu angka itu harus ditampilkan sebagai indikator kualitas udara.</p>
+</blockquote>
+<hr>
+<h2 id="9-state-machine-pipeline-runtime">9. State Machine Pipeline Runtime</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#e0f2fe","primaryBorderColor":"#0284c7","lineColor":"#334155"}}}%%
+stateDiagram-v2
+    [*] --> StackStopped
+    StackStopped --> StackStarting: scripts/start-stack.sh
+    StackStarting --> InfraReady: Kafka + Hadoop running
+    InfraReady --> TopicsAndDirsReady: scripts/init-infra.sh
+    TopicsAndDirsReady --> ProducersRunning: scripts/run-producers.sh
+    ProducersRunning --> ConsumerRunning: scripts/run-consumer.sh
+    ConsumerRunning --> HDFSReceiving: buffer flush sukses
+    HDFSReceiving --> SparkReady: data cukup
+    SparkReady --> SparkResultWritten: run analysis.ipynb
+    SparkResultWritten --> DashboardReady: scripts/run-dashboard.sh
+    DashboardReady --> Monitoring: browser fetch /api/data
+    Monitoring --> Monitoring: auto-refresh 30s
+    Monitoring --> PipelineStopped: scripts/stop-pipeline.sh
+    PipelineStopped --> StackStopped: scripts/stop-stack.sh
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan urutan status runtime dari stack mati sampai dashboard monitoring.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StackStopped</code></td>
+<td>Kondisi awal saat container belum berjalan. Container adalah lingkungan kecil yang menjalankan service seperti Kafka dan Hadoop secara terisolasi.</td>
+</tr>
+<tr>
+<td><code>StackStarting</code></td>
+<td>Kondisi saat script start stack menjalankan Docker Compose. Script adalah perintah otomatis agar langkah start tidak dilakukan manual satu per satu.</td>
+</tr>
+<tr>
+<td><code>InfraReady</code></td>
+<td>Kafka dan Hadoop sudah running. InfraReady berarti infrastruktur dasar sudah siap menerima proses aplikasi.</td>
+</tr>
+<tr>
+<td><code>TopicsAndDirsReady</code></td>
+<td>Topic Kafka dan folder HDFS sudah dibuat. Ini seperti menyiapkan rak antrean dan rak gudang sebelum paket datang.</td>
+</tr>
+<tr>
+<td><code>ProducersRunning</code></td>
+<td>Producer API dan RSS sudah berjalan. Artinya sistem mulai mengambil data dari sumber eksternal.</td>
+</tr>
+<tr>
+<td><code>ConsumerRunning</code></td>
+<td>Consumer Kafka-HDFS sudah berjalan. Artinya sistem mulai mengambil pesan dari Kafka dan menyiapkannya untuk disimpan.</td>
+</tr>
+<tr>
+<td><code>HDFSReceiving</code></td>
+<td>HDFS mulai menerima file batch. Batch berarti kumpulan beberapa record yang ditulis sekaligus.</td>
+</tr>
+<tr>
+<td><code>SparkReady</code></td>
+<td>Data cukup untuk dianalisis. Kondisi ini menunjukkan bahan baku analisis sudah tersedia.</td>
+</tr>
+<tr>
+<td><code>SparkResultWritten</code></td>
+<td>Notebook selesai menulis hasil. Artinya proses analitik sudah menghasilkan file output.</td>
+</tr>
+<tr>
+<td><code>DashboardReady</code></td>
+<td>Dashboard Flask berjalan. Artinya halaman web sudah bisa dibuka dari browser.</td>
+</tr>
+<tr>
+<td><code>Monitoring</code></td>
+<td>Browser melakukan fetch dan auto-refresh. Fetch berarti browser meminta data terbaru ke backend.</td>
+</tr>
+<tr>
+<td><code>PipelineStopped</code></td>
+<td>Pipeline Python dihentikan. Pipeline adalah rangkaian proses dari pengambilan data sampai penyajian data.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li><code>scripts/start-stack.sh</code> mengubah StackStopped menjadi StackStarting. Script ini menyalakan service dasar seperti menyalakan mesin sebelum kendaraan dipakai.</li>
+<li><code>scripts/init-infra.sh</code> membuat topic dan folder. Ini tahap menyiapkan jalur antrean Kafka dan lokasi penyimpanan HDFS.</li>
+<li><code>scripts/run-producers.sh</code> menyalakan producer. Producer mulai mengambil data dari API dan RSS.</li>
+<li><code>scripts/run-consumer.sh</code> menyalakan consumer. Consumer mulai mengambil pesan dari Kafka dan menyimpannya.</li>
+<li>Flush sukses membuat HDFS menerima data. Flush sukses berarti isi buffer berhasil dipindahkan ke gudang HDFS.</li>
+<li>Notebook Spark membuat hasil analisis. Notebook membaca data historis lalu menghasilkan ringkasan.</li>
+<li>Dashboard berjalan dan browser melakukan auto-refresh. Auto-refresh berarti tampilan memperbarui data sendiri secara berkala.</li>
+<li><code>scripts/stop-pipeline.sh</code> menghentikan producer/consumer. Ini menghentikan aliran aplikasi tanpa harus mematikan infrastruktur.</li>
+<li><code>scripts/stop-stack.sh</code> menghentikan container. Ini mematikan infrastruktur Kafka dan Hadoop.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>State machine ini cocok dipakai sebagai urutan demo di depan kelas. State machine berarti peta status sistem dari awal sampai akhir, seperti checklist tahapan operasional.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Diagram ini bisa saya pakai sebagai panduan demo. Pertama infrastruktur dinyalakan, lalu topic Kafka dan folder HDFS disiapkan, kemudian producer dan consumer berjalan, HDFS menerima batch data, Spark menghitung hasil, dan dashboard mulai memonitor. Jadi penguji bisa melihat urutan operasionalnya, bukan hanya melihat hasil akhir.</p>
+</blockquote>
+<hr>
+<h2 id="10-arsitektur-dashboard">10. Arsitektur Dashboard</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#f1f5f9","primaryBorderColor":"#475569","secondaryColor":"#dbeafe","tertiaryColor":"#dcfce7","lineColor":"#334155"}}}%%
+flowchart TB
+    Browser["Browser"]
+    HTML["index.html<br/>render panel<br/>theme toggle"]
+    JS["JavaScript<br/>fetch /api/data<br/>setInterval 30s"]
+    CSS["style.css<br/>light/dark theme<br/>AQI colors"]
+    Flask["Flask app.py"]
+    API["GET /api/data<br/>GET /api/status"]
+    SparkJSON["spark_results.json"]
+    LiveAPI["live_api.json"]
+    LiveRSS["live_rss.json"]
+    Demo["Fallback demo data"]
+
+    Browser --> HTML
+    HTML --> JS
+    HTML --> CSS
+    JS --> API
+    API --> Flask
+    Flask --> SparkJSON
+    Flask --> LiveAPI
+    Flask --> LiveRSS
+    Flask --> Demo
+    Flask --> API
+    API --> JS
+    JS --> HTML
+
+    classDef client fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#0f172a;
+    classDef server fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a;
+    classDef data fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a;
+    classDef fallback fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a;
+
+    class Browser,HTML,JS,CSS client;
+    class Flask,API server;
+    class SparkJSON,LiveAPI,LiveRSS data;
+    class Demo fallback;
+</div></code></pre>
+<h3 id="tujuan-diagram">Tujuan Diagram</h3>
+<p>Diagram ini menjelaskan cara kerja dashboard dari backend sampai browser.</p>
+<h3 id="penjelasan-semua-kotak">Penjelasan Semua Kotak</h3>
+<table>
+<thead>
+<tr>
+<th>Kotak / Node</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Browser</code></td>
+<td>Tempat pengguna membuka dashboard. Browser adalah aplikasi seperti Chrome atau Edge yang menampilkan halaman web.</td>
+</tr>
+<tr>
+<td><code>index.html</code></td>
+<td>Template HTML yang merender panel dashboard. HTML adalah kerangka halaman, seperti susunan kotak dan teks pada layar.</td>
+</tr>
+<tr>
+<td><code>JavaScript</code></td>
+<td>Kode frontend yang fetch <code>/api/data</code> dan auto-refresh 30 detik. JavaScript membuat halaman bisa meminta data baru tanpa dibuka ulang secara manual.</td>
+</tr>
+<tr>
+<td><code>style.css</code></td>
+<td>File styling untuk tema, layout, dan warna AQI. CSS mengatur tampilan visual, seperti warna kategori AQI dan tata letak kartu.</td>
+</tr>
+<tr>
+<td><code>Flask app.py</code></td>
+<td>Backend dashboard. Flask adalah server kecil yang menyiapkan data dan melayani permintaan dari browser.</td>
+</tr>
+<tr>
+<td><code>GET /api/data dan /api/status</code></td>
+<td>Endpoint JSON untuk frontend. Endpoint adalah alamat layanan; <code>GET</code> berarti browser meminta data dari alamat tersebut.</td>
+</tr>
+<tr>
+<td><code>spark_results.json</code></td>
+<td>Hasil Spark untuk panel analisis. File ini berisi ringkasan analitik yang sudah siap ditampilkan.</td>
+</tr>
+<tr>
+<td><code>live_api.json</code></td>
+<td>Snapshot AQI terbaru. Snapshot adalah salinan kondisi terkini dari data kualitas udara.</td>
+</tr>
+<tr>
+<td><code>live_rss.json</code></td>
+<td>Snapshot berita terbaru. File ini membuat panel berita dapat tampil cepat.</td>
+</tr>
+<tr>
+<td><code>Fallback demo data</code></td>
+<td>Data contoh jika file runtime belum tersedia. Fallback ini mencegah dashboard kosong ketika pipeline belum menghasilkan data.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-semua-flow">Penjelasan Semua Flow</h3>
+<ul>
+<li>Browser memuat HTML. Ini adalah tahap halaman dasar dibuka oleh pengguna.</li>
+<li>HTML memuat JavaScript dan CSS. JavaScript mengatur perilaku halaman, sedangkan CSS mengatur tampilan halaman.</li>
+<li>JavaScript fetch <code>/api/data</code>. Fetch berarti browser meminta paket data terbaru ke backend Flask.</li>
+<li>Endpoint Flask membaca JSON lokal dan fallback demo jika perlu. Flask mengambil data dari file ringkas, lalu memakai data contoh jika file runtime belum ada.</li>
+<li>Response kembali ke JavaScript. Response adalah jawaban dari backend ke browser.</li>
+<li>JavaScript merender panel Spark, API, RSS, dan chart. Render berarti menggambar data menjadi elemen visual seperti kartu, grafik, dan daftar berita.</li>
+</ul>
+<h3 id="narasi-presentasi">Narasi Presentasi</h3>
+<p>Dashboard sengaja membaca JSON ringkas agar cepat dan tidak perlu langsung membaca HDFS. HDFS cocok sebagai gudang besar, tetapi dashboard butuh respons cepat seperti etalase yang menampilkan ringkasan terbaru.</p>
+<p>Kalimat presentasi yang disarankan:</p>
+<blockquote>
+<p>Dashboard ini bekerja seperti etalase. Data lengkap tetap berada di HDFS, tetapi dashboard membaca salinan JSON yang lebih ringan. Browser membuka HTML, JavaScript meminta data ke endpoint Flask, Flask membaca file JSON, lalu hasilnya dirender menjadi kartu, grafik, dan daftar berita yang mudah dipahami pengguna.</p>
+</blockquote>
+<hr>
+<h2 id="penjelasan-semua-file-yang-disebut-dalam-diagram">Penjelasan Semua File yang Disebut dalam Diagram</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Peran dalam Arsitektur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Dokumentasi utama sistem. Informasi konsep, arsitektur, cara jalan, verifikasi, dan troubleshooting berasal dari file ini.</td>
+</tr>
+<tr>
+<td><code>ARCHITECTURE_A1.md</code></td>
+<td>Poster arsitektur A1 yang menjadi sumber diagram Mermaid dalam dokumen presentasi ini.</td>
+</tr>
+<tr>
+<td><code>docker-compose-kafka.yml</code></td>
+<td>Menjalankan Zookeeper dan Kafka broker. Kafka membuka listener host di <code>localhost:9092</code>; listener adalah alamat pintu masuk agar program Python bisa mengirim dan membaca pesan.</td>
+</tr>
+<tr>
+<td><code>docker-compose-hadoop.yml</code></td>
+<td>Menjalankan NameNode, tiga DataNode, ResourceManager, dan NodeManager. NameNode adalah pengatur lokasi file, DataNode adalah penyimpan file, dan ResourceManager/NodeManager mengatur resource komputasi Hadoop.</td>
+</tr>
+<tr>
+<td><code>hadoop.env</code></td>
+<td>Mengatur <code>fs.defaultFS</code>, WebHDFS, permission HDFS, dan <code>dfs.replication=2</code>. Replication berarti data dibuat salinannya agar lebih tahan jika satu penyimpanan bermasalah.</td>
+</tr>
+<tr>
+<td><code>.env.example</code></td>
+<td>Template environment variable untuk token, Kafka topic, interval polling, HDFS, buffering, RSS, dan dashboard. Environment variable adalah pengaturan yang bisa diubah tanpa mengedit kode utama.</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>Daftar dependency Python seperti <code>kafka-python-ng</code>, <code>feedparser</code>, <code>requests</code>, <code>hdfs</code>, <code>pyspark</code>, dan <code>flask</code>. Dependency adalah paket bantuan yang dibutuhkan program agar fitur tertentu bisa berjalan.</td>
+</tr>
+<tr>
+<td><code>scripts/start-stack.sh</code></td>
+<td>Menyalakan stack Hadoop dan Kafka. Stack berarti kumpulan service yang harus hidup bersama agar sistem siap dipakai.</td>
+</tr>
+<tr>
+<td><code>scripts/init-infra.sh</code></td>
+<td>Membuat topic Kafka dan folder HDFS awal. Ini seperti menyiapkan rak antrean dan rak gudang sebelum data datang.</td>
+</tr>
+<tr>
+<td><code>scripts/sanity-check.sh</code></td>
+<td>Memeriksa container, Kafka, HDFS, WebHDFS, dan port Kafka. Sanity check adalah pemeriksaan cepat untuk memastikan komponen dasar sehat.</td>
+</tr>
+<tr>
+<td><code>scripts/run-producers.sh</code></td>
+<td>Menjalankan producer API dan RSS di background. Background berarti proses tetap berjalan di belakang layar tanpa menahan terminal utama.</td>
+</tr>
+<tr>
+<td><code>scripts/run-consumer.sh</code></td>
+<td>Menjalankan consumer Kafka ke HDFS di background. Consumer mengambil pesan dari Kafka dan memindahkannya ke penyimpanan.</td>
+</tr>
+<tr>
+<td><code>scripts/run-dashboard.sh</code></td>
+<td>Menjalankan Flask dashboard di port 5000. Port 5000 adalah pintu browser untuk membuka dashboard lokal.</td>
+</tr>
+<tr>
+<td><code>scripts/run-all.sh</code></td>
+<td>Menjalankan stack, init, producer, consumer, dan dashboard dalam satu alur. File ini memudahkan demo karena banyak langkah digabung.</td>
+</tr>
+<tr>
+<td><code>scripts/stop-pipeline.sh</code></td>
+<td>Menghentikan producer dan consumer Python. Ini menghentikan aliran data aplikasi tanpa langsung mematikan Kafka dan Hadoop.</td>
+</tr>
+<tr>
+<td><code>scripts/stop-stack.sh</code></td>
+<td>Mematikan container Kafka dan Hadoop. Opsi <code>--volumes</code> menghapus volume data, yaitu penyimpanan container.</td>
+</tr>
+<tr>
+<td><code>kafka/producer_api.py</code></td>
+<td>Producer AQI. Mengambil data AQICN atau simulator dan mengirim ke topic <code>airquality-api</code>, yaitu jalur antrean khusus data kualitas udara.</td>
+</tr>
+<tr>
+<td><code>kafka/producer_rss.py</code></td>
+<td>Producer RSS. Membaca feed, membersihkan summary, filter keyword, dedup, dan mengirim ke topic <code>airquality-rss</code>; dedup berarti mencegah berita sama terkirim berulang.</td>
+</tr>
+<tr>
+<td><code>kafka/consumer_to_hdfs.py</code></td>
+<td>Consumer dua topic. Melakukan buffering, flush ke HDFS, mirror JSON, dan commit offset setelah sukses; ini menjaga data baru dianggap selesai setelah benar-benar tersimpan.</td>
+</tr>
+<tr>
+<td><code>spark/analysis.ipynb</code></td>
+<td>Notebook Spark yang membaca data HDFS, melakukan tiga analisis, dan menulis hasil. Notebook adalah lembar kerja interaktif untuk menjalankan analisis bertahap.</td>
+</tr>
+<tr>
+<td><code>dashboard/app.py</code></td>
+<td>Backend Flask untuk route <code>/</code>, <code>/api/data</code>, dan <code>/api/status</code>. Backend adalah bagian belakang yang menyiapkan data untuk tampilan.</td>
+</tr>
+<tr>
+<td><code>dashboard/templates/index.html</code></td>
+<td>Frontend dashboard dengan JavaScript fetch <code>/api/data</code>, Chart.js, dan auto-refresh. Frontend adalah bagian yang dilihat pengguna di browser.</td>
+</tr>
+<tr>
+<td><code>dashboard/static/style.css</code></td>
+<td>CSS dashboard untuk layout, warna AQI, light theme, dark theme, dan tampilan tegas. CSS mengatur bentuk visual halaman.</td>
+</tr>
+<tr>
+<td><code>dashboard/data/live_api.json</code></td>
+<td>Mirror runtime dari consumer untuk data AQI terbaru. Mirror runtime adalah salinan cepat yang dibuat saat sistem berjalan.</td>
+</tr>
+<tr>
+<td><code>dashboard/data/live_rss.json</code></td>
+<td>Mirror runtime dari consumer untuk berita terbaru. File ini membantu panel berita tampil cepat.</td>
+</tr>
+<tr>
+<td><code>dashboard/data/spark_results.json</code></td>
+<td>Output runtime notebook Spark untuk panel analisis dashboard. File ini adalah ringkasan hasil olahan Spark dalam bentuk JSON.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="script-presentasi-7-menit">Script Presentasi 7 Menit</h2>
+<table>
+<thead>
+<tr>
+<th>Waktu</th>
+<th>Narasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menit 0-1</td>
+<td>&quot;Proyek ini adalah AirQuality Alert, yaitu sistem monitoring kualitas udara untuk wilayah Jawa Timur. Yang dimonitor bukan hanya angka AQI, tetapi juga konteks berita lingkungan. Secara teknis ini disebut pipeline Big Data, tetapi secara sederhana pipeline berarti jalur kerja berurutan: data diambil, ditampung, disimpan, dianalisis, lalu ditampilkan.&quot;</td>
+</tr>
+<tr>
+<td>Menit 1-2</td>
+<td>&quot;Pada peta besar sistem, sumber data masuk melalui producer. Producer adalah program pengambil data. Data tidak langsung ditembak ke dashboard, tetapi masuk dulu ke Kafka. Kafka adalah ruang tunggu pesan agar pengambil data dan penyimpan data tidak saling bergantung. Setelah itu consumer mengambil pesan, menyimpannya ke HDFS sebagai gudang historis, Spark mengolahnya menjadi insight, dan dashboard menampilkannya ke pengguna.&quot;</td>
+</tr>
+<tr>
+<td>Menit 2-3</td>
+<td>&quot;Pada topologi lokal, bagian infrastruktur seperti Kafka dan Hadoop berjalan di Docker. Docker bisa dipahami sebagai wadah terisolasi untuk menjalankan service berat. Sementara itu, program Python seperti producer, consumer, notebook Spark, dan Flask dashboard berjalan di host atau mesin lokal. Pemisahan ini membuat demo lebih mudah dikontrol dan arsitekturnya lebih rapi.&quot;</td>
+</tr>
+<tr>
+<td>Menit 3-4</td>
+<td>&quot;Pada sequence AQI, program mengecek data setiap interval tertentu. Interval berarti jeda waktu pengecekan. Jika API AQICN berhasil, sistem memakai data nyata. Jika gagal, simulator menjadi fallback atau jalur cadangan. Pada sequence RSS, berita dibaca dari feed, dibersihkan dari HTML, diberi ID unik, lalu dicek supaya tidak duplikat. Jadi sistem tidak hanya mengambil data, tetapi juga menjaga data tetap relevan dan tidak berulang.&quot;</td>
+</tr>
+<tr>
+<td>Menit 4-5</td>
+<td>&quot;Pada consumer ke HDFS, data dari Kafka masuk ke buffer terlebih dahulu. Buffer adalah keranjang sementara. Flush terjadi ketika keranjang penuh berdasarkan <code>BUFFER_MAX_RECORDS</code> atau waktu tunggunya habis berdasarkan <code>BUFFER_FLUSH_SEC</code>. Setelah flush berhasil, data ditulis ke HDFS dalam format NDJSON, yaitu satu JSON per baris. Offset Kafka baru di-commit setelah write sukses, artinya pesan baru diberi tanda selesai ketika benar-benar aman tersimpan.&quot;</td>
+</tr>
+<tr>
+<td>Menit 5-6</td>
+<td>&quot;Pada Spark, data mentah dari HDFS dibaca sebagai DataFrame, yaitu tabel besar berisi baris dan kolom. Data kemudian dinormalisasi agar kolomnya seragam, lalu dibuat temp view supaya bisa dianalisis dengan SQL. Hasil analisisnya ada tiga: distribusi kategori AQI, rata-rata AQI per jam, dan ranking kota. Data contract memastikan semua komponen sepakat tentang nama field, seperti formulir standar yang harus diisi dengan format yang sama.&quot;</td>
+</tr>
+<tr>
+<td>Menit 6-7</td>
+<td>&quot;Pada dashboard, Flask bertindak sebagai backend yang menyediakan endpoint <code>/api/data</code>. Endpoint adalah alamat untuk meminta data. Browser menjalankan HTML, CSS, dan JavaScript; JavaScript mengambil data secara berkala atau auto-refresh setiap 30 detik. State machine di akhir menunjukkan urutan demo yang benar: start stack, init infra, jalankan producer, jalankan consumer, tunggu HDFS menerima data, jalankan Spark, lalu buka dashboard untuk monitoring.&quot;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hal-yang-tidak-boleh-terlewat-saat-menjelaskan">Hal yang Tidak Boleh Terlewat Saat Menjelaskan</h2>
+<ul>
+<li>Producer API dan RSS terpisah karena format data dan logika ingest berbeda. Data AQI berbentuk angka sensor, sedangkan RSS berbentuk berita teks, jadi cara membersihkan dan mengirimnya tidak sama.</li>
+<li>Kafka punya dua topic agar data AQI dan berita tidak tercampur. Topic adalah jalur antrean, seperti rak berbeda untuk paket berbeda.</li>
+<li>Consumer memakai dua thread agar dua topic dapat diproses paralel. Thread adalah jalur kerja di dalam program, sehingga data AQI dan RSS bisa ditangani bersamaan.</li>
+<li>Offset Kafka baru di-commit setelah flush berhasil. Offset adalah nomor posisi pesan, commit adalah tanda selesai, dan flush adalah pemindahan isi buffer ke HDFS.</li>
+<li>HDFS menyimpan data historis; dashboard tidak membaca HDFS langsung. HDFS berperan sebagai gudang besar, sedangkan dashboard butuh salinan ringkas agar cepat.</li>
+<li>Mirror JSON dibuat untuk kebutuhan dashboard yang cepat. Mirror JSON adalah fotokopi data terbaru dalam ukuran kecil.</li>
+<li>Spark membaca data historis, bukan data live langsung dari Kafka. Artinya Spark fokus menganalisis catatan yang sudah tersimpan, bukan mengejar pesan real-time satu per satu.</li>
+<li>Notebook punya fallback untuk masalah akses HDFS di WSL2. Fallback adalah jalur cadangan agar analisis tetap bisa berjalan jika jalur utama bermasalah.</li>
+<li>Dashboard punya fallback demo agar halaman tidak kosong. Ini penting untuk presentasi karena tampilan tetap bisa dijelaskan walaupun data runtime belum tersedia.</li>
+<li>State machine menunjukkan urutan operasional demo yang benar. State machine adalah peta status dari sistem mati sampai sistem siap monitoring.</li>
+</ul>
+<h2 id="penutup">Penutup</h2>
+<p>Arsitektur AirQuality Alert menunjukkan alur Big Data yang lengkap: ingestion sebagai pintu masuk data, message broker sebagai ruang tunggu pesan, distributed storage sebagai gudang data besar, analytics sebagai proses mengubah data mentah menjadi insight, dan presentation sebagai tampilan akhir untuk pengguna. Setiap diagram dalam dokumen ini menjelaskan satu sudut pandang yang berbeda: peta besar, deployment, sequence runtime, struktur HDFS, analisis Spark, data contract, state machine, dan dashboard.</p>
+<p>Dokumen ini dapat dipakai sebagai naskah presentasi, bahan penjelasan diagram, atau pendamping poster <code>ARCHITECTURE_A1.md</code>.</p>
+
+</body>
+</html>
