@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>address.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="alamat--tujuan-source-code--airquality-alert-kelompok-6">Alamat &amp; Tujuan Source Code — AirQuality Alert (Kelompok 6)</h1>
+<p>Dokumen ini menjelaskan <strong>di mana file/folder berada</strong> di repositori dan <strong>untuk apa</strong> dipakai. Berguna saat navigasi kode, demo, atau onboarding anggota baru. Untuk alur arsitektur lengkap, lihat <a href="./architecture.md"><code>architecture.md</code></a>.</p>
+<hr>
+<h2 id="diagram-tree-repository-dengan-penjelasan">Diagram Tree Repository dengan Penjelasan</h2>
+<p>Diagram ini menggambarkan struktur parent-child repository. Kotak biru adalah folder/kelompok utama, kotak putih adalah file, dan kotak kuning adalah penjelasan fungsi. Panah solid menunjukkan hubungan folder ke isi, sedangkan panah putus-putus menunjuk ke teks penjelas agar setiap elemen tidak hanya terlihat namanya, tetapi juga jelas dipakai untuk apa.</p>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {"theme":"base","themeVariables":{"fontFamily":"Inter, Arial","primaryColor":"#dbeafe","primaryBorderColor":"#2563eb","primaryTextColor":"#0f172a","lineColor":"#334155","secondaryColor":"#fef3c7","tertiaryColor":"#f8fafc"}}}%%
+flowchart LR
+    Repo["Kelompok-6-ets-bigdata/"]:::root
+    RepoNote["Akar repository proyek AirQuality Alert. Semua kode, dokumentasi, konfigurasi, script, dashboard, Kafka, Hadoop, dan Spark berada di bawah parent ini."]:::note
+    Repo -.-> RepoNote
+
+    Repo --> Docs["Dokumentasi & naskah"]:::folder
+    DocsNote["Kelompok file untuk menjelaskan proyek, arsitektur, alamat file, checklist, dan materi presentasi."]:::note
+    Docs -.-> DocsNote
+    Docs --> Readme["README.md"]:::file
+    Readme -.-> ReadmeNote["Dokumentasi utama: cara setup, cara menjalankan demo, troubleshooting, dan gambaran lengkap proyek."]:::note
+    Docs --> Architecture["architecture.md"]:::file
+    Architecture -.-> ArchitectureNote["Dokumen arsitektur umum yang menjelaskan alur sistem dari sumber data sampai dashboard."]:::note
+    Docs --> ArchA1["ARCHITECTURE_A1.md"]:::file
+    ArchA1 -.-> ArchA1Note["Poster atau dokumen arsitektur A1 berisi diagram Mermaid untuk menjelaskan desain sistem secara visual."]:::note
+    Docs --> Address["address.md"]:::file
+    Address -.-> AddressNote["Dokumen ini: peta lokasi file, folder, alamat Kafka, alamat HDFS, dan fungsi tiap komponen repository."]:::note
+    Docs --> Checklist["CHECKLIST.md"]:::file
+    Checklist -.-> ChecklistNote["Daftar verifikasi pengerjaan proyek agar kebutuhan rubrik, demo, dan komponen penting tidak terlewat."]:::note
+    Docs --> Presentasi["persentasi.md"]:::file
+    Presentasi -.-> PresentasiNote["Naskah presentasi arsitektur yang menjelaskan diagram teknis dengan bahasa yang lebih mudah dipahami audiens."]:::note
+    Docs --> PresentasiHtml["persentasi.html"]:::file
+    PresentasiHtml -.-> PresentasiHtmlNote["Versi HTML dari naskah presentasi untuk dibuka di browser atau dipakai sebagai bahan tampil."]:::note
+    Docs --> PresentasiTmp["persentasi_tmp.html"]:::runtime
+    PresentasiTmp -.-> PresentasiTmpNote["File HTML sementara hasil render/export. Biasanya dipakai saat proses pembuatan presentasi, bukan sumber utama."]:::note
+    Docs --> ArchHtml["ARCHITECTURE_A1.html"]:::file
+    ArchHtml -.-> ArchHtmlNote["Versi HTML dari poster arsitektur A1 agar diagram dapat dilihat di browser."]:::note
+
+    Repo --> Config["Konfigurasi root"]:::folder
+    ConfigNote["Kelompok file pengaturan yang menentukan dependency, environment, Docker, Hadoop, Kafka, dan ignore rule Git."]:::note
+    Config -.-> ConfigNote
+    Config --> Req["requirements.txt"]:::file
+    Req -.-> ReqNote["Daftar dependency Python seperti Flask, PySpark, kafka-python-ng, hdfs, feedparser, dan requests."]:::note
+    Config --> Env[".env"]:::secret
+    Env -.-> EnvNote["File konfigurasi lokal berisi token dan nilai runtime. Ini rahasia lokal dan tidak boleh di-commit."]:::note
+    Config --> EnvExample[".env.example"]:::file
+    EnvExample -.-> EnvExampleNote["Template variabel environment tanpa rahasia. Dipakai sebagai contoh sebelum membuat `.env`."]:::note
+    Config --> Gitignore[".gitignore"]:::file
+    Gitignore -.-> GitignoreNote["Aturan Git untuk mengabaikan file lokal seperti `.env`, `.venv/`, log, dan JSON runtime dashboard."]:::note
+    Config --> HadoopEnv["hadoop.env"]:::file
+    HadoopEnv -.-> HadoopEnvNote["Environment Hadoop, termasuk default filesystem, permission, dan replikasi data HDFS."]:::note
+    Config --> ComposeKafka["docker-compose-kafka.yml"]:::file
+    ComposeKafka -.-> ComposeKafkaNote["Menyalakan Zookeeper dan Kafka broker sebagai message broker atau ruang tunggu pesan."]:::note
+    Config --> ComposeHadoop["docker-compose-hadoop.yml"]:::file
+    ComposeHadoop -.-> ComposeHadoopNote["Menyalakan cluster Hadoop lokal: NameNode, DataNode, ResourceManager, NodeManager, network, dan volume."]:::note
+
+    Repo --> Scripts["scripts/"]:::folder
+    ScriptsNote["Folder automasi command agar start, stop, init, sanity check, dan proses pipeline tidak dilakukan manual satu per satu."]:::note
+    Scripts -.-> ScriptsNote
+    Scripts --> StartStack["start-stack.sh"]:::script
+    StartStack -.-> StartStackNote["Menyalakan stack Kafka dan Hadoop melalui Docker Compose."]:::note
+    Scripts --> StopStack["stop-stack.sh"]:::script
+    StopStack -.-> StopStackNote["Mematikan stack Kafka dan Hadoop. Opsi `--volumes` dapat menghapus volume data lokal."]:::note
+    Scripts --> InitInfra["init-infra.sh"]:::script
+    InitInfra -.-> InitInfraNote["Membuat topic Kafka dan folder awal HDFS sebelum data mulai diproses."]:::note
+    Scripts --> Sanity["sanity-check.sh"]:::script
+    Sanity -.-> SanityNote["Mengecek kondisi container, Kafka, HDFS, WebHDFS, dan port penting sebelum demo."]:::note
+    Scripts --> RunProducers["run-producers.sh"]:::script
+    RunProducers -.-> RunProducersNote["Menjalankan producer API dan RSS di background, lalu menulis output ke log."]:::note
+    Scripts --> RunConsumer["run-consumer.sh"]:::script
+    RunConsumer -.-> RunConsumerNote["Menjalankan consumer Kafka ke HDFS di background untuk menyimpan data dan membuat mirror dashboard."]:::note
+    Scripts --> RunDashboard["run-dashboard.sh"]:::script
+    RunDashboard -.-> RunDashboardNote["Menjalankan Flask dashboard di port lokal agar bisa dibuka melalui browser."]:::note
+    Scripts --> RunAll["run-all.sh"]:::script
+    RunAll -.-> RunAllNote["Menjalankan alur lengkap: start stack, init infra, producer, consumer, lalu dashboard."]:::note
+    Scripts --> StopPipeline["stop-pipeline.sh"]:::script
+    StopPipeline -.-> StopPipelineNote["Menghentikan proses Python producer dan consumer tanpa mematikan infrastruktur Docker."]:::note
+    Scripts --> InstallDocker["install-docker-wsl.sh"]:::script
+    InstallDocker -.-> InstallDockerNote["Script bantu opsional untuk instalasi Docker di lingkungan WSL."]:::note
+
+    Repo --> KafkaDir["kafka/"]:::folder
+    KafkaDirNote["Folder kode ingestion dan consumer. Ingestion berarti pintu masuk data dari API/RSS ke Kafka, lalu consumer memindahkannya ke HDFS."]:::note
+    KafkaDir -.-> KafkaDirNote
+    KafkaDir --> ProducerApi["producer_api.py"]:::code
+    ProducerApi -.-> ProducerApiNote["Mengambil data AQI dari AQICN atau simulator, menormalkan payload, lalu mengirim message ke topic `airquality-api`."]:::note
+    KafkaDir --> ProducerRss["producer_rss.py"]:::code
+    ProducerRss -.-> ProducerRssNote["Membaca RSS feed, membersihkan ringkasan, filter keyword lingkungan, dedup berita, lalu mengirim ke topic `airquality-rss`."]:::note
+    KafkaDir --> ConsumerHdfs["consumer_to_hdfs.py"]:::code
+    ConsumerHdfs -.-> ConsumerHdfsNote["Membaca dua topic Kafka, menampung data di buffer, flush ke HDFS, membuat mirror JSON, lalu commit offset setelah write sukses."]:::note
+    KafkaDir --> SeenIds["seen_ids.json"]:::runtime
+    SeenIds -.-> SeenIdsNote["File runtime untuk mencatat berita RSS yang sudah pernah dikirim agar tidak duplikat."]:::note
+
+    Repo --> SparkDir["spark/"]:::folder
+    SparkDirNote["Folder analitik. Spark membaca data historis dari HDFS lalu menghasilkan ringkasan analisis."]:::note
+    SparkDir -.-> SparkDirNote
+    SparkDir --> Analysis["analysis.ipynb"]:::notebook
+    Analysis -.-> AnalysisNote["Notebook Spark untuk membaca data HDFS, menjalankan tiga analisis, menyimpan Parquet ke HDFS, dan membuat `spark_results.json`."]:::note
+
+    Repo --> DashboardDir["dashboard/"]:::folder
+    DashboardDirNote["Folder aplikasi dashboard. Backend Flask menyiapkan data, frontend menampilkan grafik, tabel, dan berita."]:::note
+    DashboardDir -.-> DashboardDirNote
+    DashboardDir --> App["app.py"]:::code
+    App -.-> AppNote["Backend Flask yang menyediakan route `/`, `/api/data`, dan `/api/status` untuk dashboard."]:::note
+    DashboardDir --> Templates["templates/"]:::folder
+    Templates -.-> TemplatesNote["Folder template HTML yang menentukan struktur tampilan halaman dashboard."]:::note
+    Templates --> Index["index.html"]:::file
+    Index -.-> IndexNote["Frontend utama: memuat panel, chart, tabel AQI, RSS, theme toggle, dan auto-refresh data."]:::note
+    DashboardDir --> Static["static/"]:::folder
+    Static -.-> StaticNote["Folder aset statis seperti CSS yang mengatur tampilan halaman."]:::note
+    Static --> Style["style.css"]:::file
+    Style -.-> StyleNote["Mengatur layout, warna kategori AQI, light/dark theme, spacing, dan tampilan dashboard."]:::note
+    DashboardDir --> DataDir["data/"]:::folder
+    DataDir -.-> DataDirNote["Folder data runtime untuk JSON ringkas yang dibaca dashboard."]:::note
+    DataDir --> Gitkeep[".gitkeep"]:::file
+    Gitkeep -.-> GitkeepNote["File kosong agar folder `data/` tetap ada di Git walaupun JSON runtime di-ignore."]:::note
+    DataDir --> LiveApi["live_api.json"]:::runtime
+    LiveApi -.-> LiveApiNote["Mirror runtime dari consumer berisi data AQI terbaru untuk dashboard."]:::note
+    DataDir --> LiveRss["live_rss.json"]:::runtime
+    LiveRss -.-> LiveRssNote["Mirror runtime dari consumer berisi daftar berita terbaru untuk dashboard."]:::note
+    DataDir --> SparkResults["spark_results.json"]:::runtime
+    SparkResults -.-> SparkResultsNote["Output notebook Spark berisi hasil tiga analisis dalam JSON untuk grafik dan tabel dashboard."]:::note
+
+    Repo --> LocalRuntime["Runtime lokal yang di-ignore"]:::folder
+    LocalRuntimeNote["Kelompok file/folder yang biasanya ada saat program berjalan, tetapi tidak menjadi sumber kode utama repository."]:::note
+    LocalRuntime -.-> LocalRuntimeNote
+    LocalRuntime --> Logs["logs/"]:::runtime
+    Logs -.-> LogsNote["Folder log proses producer dan consumer ketika dijalankan lewat script background."]:::note
+    LocalRuntime --> Venv[".venv/"]:::runtime
+    Venv -.-> VenvNote["Virtual environment Python lokal berisi paket dependency. Tidak di-commit karena bisa dibuat ulang dari `requirements.txt`."]:::note
+    LocalRuntime --> GitDir[".git/"]:::runtime
+    GitDir -.-> GitDirNote["Metadata internal Git untuk history, branch, rebase, dan status repository. Bukan bagian kode aplikasi."]:::note
+
+    classDef root fill:#bfdbfe,stroke:#1d4ed8,stroke-width:3px,color:#0f172a;
+    classDef folder fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#0f172a;
+    classDef file fill:#f8fafc,stroke:#475569,stroke-width:1.5px,color:#0f172a;
+    classDef code fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a;
+    classDef script fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#0f172a;
+    classDef notebook fill:#fae8ff,stroke:#9333ea,stroke-width:2px,color:#0f172a;
+    classDef secret fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#0f172a;
+    classDef runtime fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#0f172a;
+    classDef note fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#422006;
+</div></code></pre>
+<hr>
+<h2 id="akar-repositori">Akar repositori (<code>/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Lokasi</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Dokumentasi utama: setup, demo, troubleshooting.</td>
+</tr>
+<tr>
+<td><code>architecture.md</code></td>
+<td>Arsitektur, alur data, penjelasan teknis + eksekutif.</td>
+</tr>
+<tr>
+<td><code>address.md</code></td>
+<td><strong>Dokumen ini</strong> — peta file &amp; path runtime (HDFS, Kafka, dll.).</td>
+</tr>
+<tr>
+<td><code>CHECKLIST.md</code></td>
+<td>Checklist pengerjaan / verifikasi rubrik.</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>Dependensi Python (Flask, PySpark, kafka-python-ng, hdfs, dll.).</td>
+</tr>
+<tr>
+<td><code>.env</code></td>
+<td><strong>Rahasia lokal</strong> — token AQICN, interval, path HDFS, consumer group, RSS, buffer. <strong>Jangan di-commit.</strong></td>
+</tr>
+<tr>
+<td><code>.env.example</code></td>
+<td>Contoh variabel (tanpa rahasia) untuk disalin ke <code>.env</code>.</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Mengabaikan <code>.venv/</code>, <code>.env</code>, log, JSON data dashboard, <code>seen_ids.json</code>, dll.</td>
+</tr>
+<tr>
+<td><code>hadoop.env</code></td>
+<td>Variabel lingkungan untuk image Hadoop (termasuk <code>fs.defaultFS</code>, <code>dfs.replication</code>, dll.).</td>
+</tr>
+<tr>
+<td><code>docker-compose-hadoop.yml</code></td>
+<td>Definisi cluster Hadoop: NameNode, <strong>3× DataNode</strong>, ResourceManager, NodeManager, jaringan &amp; volume.</td>
+</tr>
+<tr>
+<td><code>docker-compose-kafka.yml</code></td>
+<td>Zookeeper + <strong>Kafka broker</strong> (topik tidak otomatis dibuat kecuali diset lain — lihat init).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="skrip-bantu-scripts">Skrip bantu (<code>scripts/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start-stack.sh</code></td>
+<td>Menjalankan Docker Compose Kafka + Hadoop.</td>
+</tr>
+<tr>
+<td><code>stop-stack.sh</code></td>
+<td>Menghentikan stack; opsi <code>--volumes</code> untuk reset data HDFS lokal.</td>
+</tr>
+<tr>
+<td><code>init-infra.sh</code></td>
+<td>Membuat topik Kafka &amp; folder HDFS awal.</td>
+</tr>
+<tr>
+<td><code>sanity-check.sh</code></td>
+<td>Cek cepat: container, Kafka, HDFS, port.</td>
+</tr>
+<tr>
+<td><code>run-producers.sh</code></td>
+<td>Menjalankan <code>producer_api.py</code> + <code>producer_rss.py</code> ke background + log.</td>
+</tr>
+<tr>
+<td><code>run-consumer.sh</code></td>
+<td>Menjalankan <code>consumer_to_hdfs.py</code> ke background + log.</td>
+</tr>
+<tr>
+<td><code>run-dashboard.sh</code></td>
+<td>Menjalankan Flask <code>dashboard/app.py</code> (foreground).</td>
+</tr>
+<tr>
+<td><code>run-all.sh</code></td>
+<td>Alur: stack → tunggu → init → producer → consumer → dashboard.</td>
+</tr>
+<tr>
+<td><code>stop-pipeline.sh</code></td>
+<td>Menghentikan proses Python producer/consumer (bukan Docker).</td>
+</tr>
+<tr>
+<td><code>install-docker-wsl.sh</code></td>
+<td>Bantuan instalasi Docker di WSL (opsional).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="kafka--kode--data-kafka">Kafka — kode &amp; data (<code>kafka/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>producer_api.py</code></td>
+<td>Membaca <strong>AQICN</strong> (atau <strong>simulator</strong> bila token kosong/gagal), mengirim event JSON ke topik <strong><code>airquality-api</code></strong>, kunci = slug kota, interval default 15 menit.</td>
+</tr>
+<tr>
+<td><code>producer_rss.py</code></td>
+<td>Membaca <strong>RSS</strong> (URL dari <code>RSS_FEEDS</code>), filter keyword, deduplikasi, mengirim ke topik <strong><code>airquality-rss</code></strong>, kunci = hash URL, interval default 5 menit.</td>
+</tr>
+<tr>
+<td><code>consumer_to_hdfs.py</code></td>
+<td>Dua <em>thread</em> consumer (satu per topik), <strong>buffer</strong> lalu <strong>flush</strong> ke HDFS; mirror ke <code>dashboard/data/live_*.json</code>; opsi <code>HDFS_WRITE_MODE=docker_exec</code> untuk WSL2.</td>
+</tr>
+<tr>
+<td><code>seen_ids.json</code></td>
+<td>Menyimpan ID artikel RSS yang sudah pernah dikirim (dedup). <strong>Dibuat saat runtime</strong>, biasanya di <code>.gitignore</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="topik-kafka-nama-bawaan">Topik Kafka (nama bawaan)</h3>
+<table>
+<thead>
+<tr>
+<th>Topik</th>
+<th>Isi</th>
+<th>Producer</th>
+<th>Consumer (group)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>airquality-api</code></td>
+<td>Event AQI per kota</td>
+<td><code>producer_api.py</code></td>
+<td><code>consumer_to_hdfs.py</code> (group dari <code>CONSUMER_GROUP_API</code>)</td>
+</tr>
+<tr>
+<td><code>airquality-rss</code></td>
+<td>Item berita</td>
+<td><code>producer_rss.py</code></td>
+<td><code>consumer_to_hdfs.py</code> (group dari <code>CONSUMER_GROUP_RSS</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Nama topik &amp; group bisa di-override lewat <strong><code>.env</code></strong>.</p>
+<hr>
+<h2 id="hdfs--path-logis-di-cluster">HDFS — path logis (di cluster)</h2>
+<p>Lokasi default dasar: <strong><code>/data/airquality</code></strong> (diset lewat <code>HDFS_BASE_DIR</code> di <code>.env</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Path HDFS</th>
+<th>Isi</th>
+<th>Ditulis oleh</th>
+<th>Dibaca oleh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/data/airquality/api/</code></td>
+<td>File <strong>JSONL</strong> (satu file per flush) berisi batch event <strong>API</strong></td>
+<td><code>consumer_to_hdfs.py</code></td>
+<td><code>spark/analysis.ipynb</code></td>
+</tr>
+<tr>
+<td><code>/data/airquality/rss/</code></td>
+<td>File <strong>JSONL</strong> per flush berisi batch <strong>RSS</strong></td>
+<td><code>consumer_to_hdfs.py</code></td>
+<td>(opsional analisis) Spark / notebook</td>
+</tr>
+<tr>
+<td><code>/data/airquality/hasil/</code></td>
+<td>Keluaran <strong>Parquet</strong> (Spark): distribusi, rata-rata per jam, ranking</td>
+<td><code>analysis.ipynb</code></td>
+<td>Verifikasi / job lain</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Akses dari host</strong></p>
+<ul>
+<li><strong>RPC:</strong> <code>hdfs://localhost:9000</code> (default <code>HDFS_NAMENODE_RPC</code>).</li>
+<li><strong>Web UI NameNode:</strong> <code>http://localhost:9870</code> — jelajah file &amp; cek replikasi.</li>
+<li><strong>WebHDFS:</strong> <code>http://localhost:9870</code> — dipakai kode Python <code>hdfs</code> untuk list/mkdir; tulis isi file besar sering lewat <strong><code>docker exec namenode hdfs dfs -put</code></strong> agar aman di WSL2.</li>
+</ul>
+<p><strong>Container yang relevan:</strong> nama service/<code>container_name</code> sering <strong><code>namenode</code></strong> — dipakai perintah <code>docker exec</code> di consumer &amp; notebook bila perlu.</p>
+<hr>
+<h2 id="spark-spark">Spark (<code>spark/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>analysis.ipynb</code></td>
+<td>Baca data historis API dari HDFS (native + <strong>fallback</strong> <code>docker exec</code> / lokal jika WSL2), <strong>3 analisis wajib</strong> (DataFrame + Spark SQL), simpan Parquet ke <code>.../hasil/</code>, ringkasan JSON ke <code>dashboard/data/spark_results.json</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="dashboard-dashboard">Dashboard (<code>dashboard/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app.py</code></td>
+<td>Aplikasi Flask: <code>/</code>, <code>/api/data</code>, normalisasi data, flag demo, render template.</td>
+</tr>
+<tr>
+<td><code>templates/index.html</code></td>
+<td>UI: panel Spark, chart, tabel AQI, RSS, tema gelap/terang, auto-refresh.</td>
+</tr>
+<tr>
+<td><code>static/style.css</code></td>
+<td>Gaya tampilan (tema tegas, variabel light/dark).</td>
+</tr>
+<tr>
+<td><code>data/.gitkeep</code></td>
+<td>Menjaga folder <code>data/</code> di Git tanpa men-commit JSON isi.</td>
+</tr>
+<tr>
+<td><code>data/live_api.json</code></td>
+<td><strong>Mirror</strong> consumer — kota &amp; AQI terbaru (dibuat saat consumer flush).</td>
+</tr>
+<tr>
+<td><code>data/live_rss.json</code></td>
+<td><strong>Mirror</strong> consumer — daftar berita (hingga 50 item).</td>
+</tr>
+<tr>
+<td><code>data/spark_results.json</code></td>
+<td><strong>Output notebook</strong> — struktur 3 analisis untuk grafik &amp; tabel historis.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Catatan:</strong> File di <code>data/*.json</code> (selain <code>.gitkeep</code>) sering di-ignore Git — isi berasal dari <strong>pipeline</strong> atau <strong>notebook</strong>, bukan template statis.</p>
+<hr>
+<h2 id="log--runtime-lokal">Log &amp; runtime lokal</h2>
+<table>
+<thead>
+<tr>
+<th>Lokasi</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>logs/producer_api.log</code></td>
+<td>Stdout/stderr <code>producer_api.py</code> jika dijalankan lewat skrip <code>nohup</code>.</td>
+</tr>
+<tr>
+<td><code>logs/producer_rss.log</code></td>
+<td>Idem untuk <code>producer_rss.py</code>.</td>
+</tr>
+<tr>
+<td><code>logs/consumer.log</code></td>
+<td>Idem untuk <code>consumer_to_hdfs.py</code> (termasuk baris <code>FLUSH</code> ke HDFS).</td>
+</tr>
+<tr>
+<td><code>.venv/</code></td>
+<td>Virtual environment Python — <strong>jangan di-commit</strong> (lihat <code>.gitignore</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="ringkasan-alur-data-file-vs-cluster">Ringkasan alur data (file vs cluster)</h2>
+<pre class="hljs"><code><div>AQICN / RSS  →  producers  →  Kafka topics  →  consumer  →  HDFS /data/airquality/{api,rss}/
+                                   ↓
+                            mirror JSON  →  dashboard/data/live_*.json  →  Flask
+     
+HDFS {api}  →  Spark notebook  →  HDFS hasil/ + dashboard/data/spark_results.json  →  Flask
+</div></code></pre>
+<hr>
+<h2 id="cepat-variabel-env-yang-memengaruhi-alamat">Cepat: variabel <code>.env</code> yang memengaruhi “alamat”</h2>
+<table>
+<thead>
+<tr>
+<th>Variabel (contoh)</th>
+<th>Efek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KAFKA_BOOTSTRAP</code></td>
+<td>Alamat broker (biasanya <code>localhost:9092</code>).</td>
+</tr>
+<tr>
+<td><code>KAFKA_TOPIC_API</code> / <code>KAFKA_TOPIC_RSS</code></td>
+<td>Nama topik.</td>
+</tr>
+<tr>
+<td><code>HDFS_NAMENODE_URL</code> / <code>HDFS_NAMENODE_RPC</code></td>
+<td>Web UI + URI HDFS untuk client.</td>
+</tr>
+<tr>
+<td><code>HDFS_BASE_DIR</code></td>
+<td>Akar folder proyek di HDFS (default <code>/data/airquality</code>).</td>
+</tr>
+<tr>
+<td><code>HDFS_NAMENODE_CONTAINER</code></td>
+<td>Nama container untuk <code>docker exec</code> (default <code>namenode</code>).</td>
+</tr>
+<tr>
+<td><code>HDFS_WRITE_MODE</code></td>
+<td><code>docker_exec</code> (disarankan WSL) vs <code>webhdfs</code>.</td>
+</tr>
+<tr>
+<td><code>BUFFER_FLUSH_SEC</code> / <code>BUFFER_MAX_RECORDS</code></td>
+<td>Seberapa sering file baru di HDFS + mirror.</td>
+</tr>
+<tr>
+<td><code>RSS_FEEDS</code> / <code>RSS_KEYWORDS</code></td>
+<td>Sumber &amp; filter berita.</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td>Port dashboard Flask.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Dokumen ini sejajar dengan layout repositori <code>Kelompok-6-ets-bigdata</code> terkini. Jika file dipindah, perbarui tabel di atas.</em></p>
+
+</body>
+</html>

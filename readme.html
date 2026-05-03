@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="airquality-alert-monitoring-kualitas-udara-jawa-timur">AirQuality Alert: Monitoring Kualitas Udara Jawa Timur</h1>
+<p>ETS Big Data &amp; Data Lakehouse - Kelompok 6</p>
+<blockquote>
+<p><strong>Fokus README</strong>
+README ini menjelaskan sistem, arsitektur, alur data, file, konfigurasi, cara jalan, validasi, troubleshooting, dan alasan desain.
+Catatan pengerjaan, checklist fase, dan item kerja tetap berada di <code>CHECKLIST.md</code>.</p>
+</blockquote>
+<hr>
+<h2 id="daftar-isi">Daftar Isi</h2>
+<ul>
+<li>Ringkasan Cepat</li>
+<li>Latar Belakang</li>
+<li>Tujuan dan Pertanyaan Bisnis</li>
+<li>Arsitektur Utama</li>
+<li>Alur Data Lengkap</li>
+<li>Struktur Repository</li>
+<li>Komponen Infrastruktur</li>
+<li>Pipeline Kafka</li>
+<li>Penyimpanan HDFS</li>
+<li>Analisis Spark</li>
+<li>Dashboard Flask</li>
+<li>Konfigurasi Environment</li>
+<li>Cara Menjalankan</li>
+<li>Verifikasi</li>
+<li>Troubleshooting</li>
+<li>Argumentasi Desain</li>
+<li>Batasan dan Rekomendasi</li>
+<li>Glosarium</li>
+<li>Lampiran Rinci</li>
+<li>Kesimpulan</li>
+</ul>
+<hr>
+<h2 id="ringkasan-cepat">Ringkasan Cepat</h2>
+<p>Proyek ini adalah pipeline Big Data untuk memantau kualitas udara beberapa kota di Jawa Timur.</p>
+<table>
+<thead>
+<tr>
+<th>Bagian</th>
+<th>Teknologi</th>
+<th>Peran</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingest AQI</td>
+<td><code>producer_api.py</code></td>
+<td>Mengambil data AQI dari AQICN atau simulator.</td>
+</tr>
+<tr>
+<td>Ingest RSS</td>
+<td><code>producer_rss.py</code></td>
+<td>Mengambil berita dari RSS dan melakukan deduplikasi.</td>
+</tr>
+<tr>
+<td>Message broker</td>
+<td>Apache Kafka</td>
+<td>Menjadi antrian data untuk API dan RSS.</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Hadoop HDFS</td>
+<td>Menyimpan data historis dalam file batch.</td>
+</tr>
+<tr>
+<td>Analytics</td>
+<td>Apache Spark</td>
+<td>Menghitung distribusi kategori, rata-rata per jam, dan ranking kota.</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td>Flask + Chart.js</td>
+<td>Menampilkan data live dan hasil analisis dalam dashboard.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Teknis:</strong> Alur utama adalah <code>AQICN/RSS -&gt; Producer -&gt; Kafka -&gt; Consumer -&gt; HDFS -&gt; Spark -&gt; Dashboard</code>.</p>
+<p><strong>Maksud sederhana:</strong> Data diambil, diantrikan, disimpan, dihitung, lalu ditampilkan.</p>
+<h2 id="latar-belakang">Latar Belakang</h2>
+<h3 id="kualitas-udara-berubah-menurut-waktu">Kualitas udara berubah menurut waktu</h3>
+<p><strong>Teknis:</strong> AQI adalah data time-series karena nilainya berubah dari waktu ke waktu.</p>
+<p><strong>Maksud sederhana:</strong> Kondisi udara pagi, siang, dan malam bisa berbeda.</p>
+<h3 id="kualitas-udara-berbeda-antar-kota">Kualitas udara berbeda antar kota</h3>
+<p><strong>Teknis:</strong> Surabaya, Sidoarjo, Gresik, Mojokerto, dan Malang memiliki karakter aktivitas berbeda.</p>
+<p><strong>Maksud sederhana:</strong> Setiap kota punya risiko dan pola kualitas udara sendiri.</p>
+<h3 id="data-angka-butuh-konteks">Data angka butuh konteks</h3>
+<p><strong>Teknis:</strong> AQI memberi angka, sedangkan RSS memberi konteks berita lingkungan.</p>
+<p><strong>Maksud sederhana:</strong> Pengguna tidak hanya melihat angka, tetapi juga konteks kejadian.</p>
+<h3 id="big-data-cocok-untuk-pola-historis">Big Data cocok untuk pola historis</h3>
+<p><strong>Teknis:</strong> Data disimpan di HDFS agar bisa dianalisis ulang oleh Spark.</p>
+<p><strong>Maksud sederhana:</strong> Data lama tetap berguna untuk menemukan pola.</p>
+<h3 id="dashboard-memudahkan-konsumsi-informasi">Dashboard memudahkan konsumsi informasi</h3>
+<p><strong>Teknis:</strong> Flask menyajikan ringkasan dalam bentuk API dan halaman web.</p>
+<p><strong>Maksud sederhana:</strong> Hasil analisis bisa dibaca tanpa membuka notebook atau terminal.</p>
+<h2 id="tujuan-dan-pertanyaan-bisnis">Tujuan dan Pertanyaan Bisnis</h2>
+<table>
+<thead>
+<tr>
+<th>Pertanyaan</th>
+<th>Jawaban Teknis</th>
+<th>Maksud Sederhana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jam berapa kualitas udara paling buruk?</td>
+<td>Spark SQL menghitung rata-rata AQI per kota per jam.</td>
+<td>Menemukan jam rawan polusi.</td>
+</tr>
+<tr>
+<td>Kota mana yang kualitas udaranya paling buruk?</td>
+<td>Spark membuat ranking berdasarkan rata-rata AQI.</td>
+<td>Menentukan kota prioritas perhatian.</td>
+</tr>
+<tr>
+<td>Seberapa sering kota masuk kategori buruk?</td>
+<td>Spark menghitung distribusi kategori AQI per kota.</td>
+<td>Melihat seberapa sering udara tidak sehat.</td>
+</tr>
+<tr>
+<td>Apa konteks beritanya?</td>
+<td>Producer RSS mengirim berita ke Kafka dan HDFS.</td>
+<td>Menampilkan berita lingkungan terkait.</td>
+</tr>
+<tr>
+<td>Bagaimana semua komponen tersambung?</td>
+<td>README ini memetakan producer, Kafka, HDFS, Spark, dan Flask.</td>
+<td>Pembaca bisa mengikuti alur dari sumber data sampai dashboard.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arsitektur-utama">Arsitektur Utama</h2>
+<pre class="hljs"><code><div>+----------------------+       +----------------------+
+| AQICN API            |       | RSS Feeds            |
+| atau Simulator       |       | Detik/Tempo/Kompas   |
++----------+-----------+       +----------+-----------+
+           |                              |
+           v                              v
++----------------------+       +----------------------+
+| producer_api.py      |       | producer_rss.py      |
+| key = city_slug      |       | key = md5(link)      |
++----------+-----------+       +----------+-----------+
+           |                              |
+           +--------------+---------------+
+                          v
++------------------------------------------------------+
+| Apache Kafka                                         |
+| topic: airquality-api                                |
+| topic: airquality-rss                                |
++-------------------------+----------------------------+
+                          |
+                          v
++------------------------------------------------------+
+| consumer_to_hdfs.py                                 |
+| dua thread, buffer, flush HDFS, mirror dashboard     |
++-------------------------+----------------------------+
+                          |
+          +---------------+---------------+
+          |                               |
+          v                               v
++-------------------------+     +------------------------+
+| HDFS                    |     | dashboard/data JSON    |
+| api, rss, hasil         |     | live_api, live_rss     |
++------------+------------+     +-----------+------------+
+             |                              |
+             v                              v
++-------------------------+     +------------------------+
+| spark/analysis.ipynb    |     | dashboard/app.py       |
+| tiga analisis utama     |     | Flask API + HTML       |
++------------+------------+     +-----------+------------+
+             |                              |
+             +---------------+--------------+
+                             v
+                       Browser pengguna
+</div></code></pre>
+<p><strong>Teknis:</strong> Arsitektur memisahkan ingestion, broker, storage, analytics, dan presentation.</p>
+<p><strong>Maksud sederhana:</strong> Setiap bagian punya tugas sendiri sehingga sistem mudah dipahami dan diuji.</p>
+<h2 id="alur-data-lengkap">Alur Data Lengkap</h2>
+<h3 id="1-producer-api-membaca-data">1. Producer API membaca data</h3>
+<p><strong>Teknis:</strong> <code>producer_api.py</code> membaca AQICN atau simulator untuk lima kota.</p>
+<p><strong>Maksud sederhana:</strong> Data kualitas udara masuk ke sistem.</p>
+<h3 id="2-producer-rss-membaca-berita">2. Producer RSS membaca berita</h3>
+<p><strong>Teknis:</strong> <code>producer_rss.py</code> membaca feed RSS, filter keyword, dan dedup link.</p>
+<p><strong>Maksud sederhana:</strong> Berita terbaru masuk sebagai konteks.</p>
+<h3 id="3-kafka-menyimpan-message">3. Kafka menyimpan message</h3>
+<p><strong>Teknis:</strong> Kafka menyimpan event API dan RSS di dua topic terpisah.</p>
+<p><strong>Maksud sederhana:</strong> Data menunggu di antrian.</p>
+<h3 id="4-consumer-membaca-kafka">4. Consumer membaca Kafka</h3>
+<p><strong>Teknis:</strong> <code>consumer_to_hdfs.py</code> membaca dua topic dengan dua thread.</p>
+<p><strong>Maksud sederhana:</strong> Dua aliran diproses paralel.</p>
+<h3 id="5-consumer-menulis-hdfs">5. Consumer menulis HDFS</h3>
+<p><strong>Teknis:</strong> Data di-buffer lalu ditulis ke HDFS sebagai NDJSON.</p>
+<p><strong>Maksud sederhana:</strong> Data menjadi arsip historis.</p>
+<h3 id="6-consumer-membuat-mirror">6. Consumer membuat mirror</h3>
+<p><strong>Teknis:</strong> Snapshot terbaru ditulis ke <code>dashboard/data/live_*.json</code>.</p>
+<p><strong>Maksud sederhana:</strong> Dashboard punya data cepat dibaca.</p>
+<h3 id="7-spark-membaca-hdfs">7. Spark membaca HDFS</h3>
+<p><strong>Teknis:</strong> Notebook membaca data API dari <code>/data/airquality/api/</code>.</p>
+<p><strong>Maksud sederhana:</strong> Data historis dihitung.</p>
+<h3 id="8-spark-menulis-hasil">8. Spark menulis hasil</h3>
+<p><strong>Teknis:</strong> Hasil analisis ditulis ke HDFS dan <code>spark_results.json</code>.</p>
+<p><strong>Maksud sederhana:</strong> Insight siap ditampilkan.</p>
+<h3 id="9-flask-menyajikan-dashboard">9. Flask menyajikan dashboard</h3>
+<p><strong>Teknis:</strong> Flask membaca JSON lokal dan menyajikan <code>/api/data</code>.</p>
+<p><strong>Maksud sederhana:</strong> Pengguna melihat hasil di browser.</p>
+<h2 id="struktur-repository">Struktur Repository</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Fungsi</th>
+<th>Catatan Baca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Dokumentasi utama.</td>
+<td>Fokus pada sistem, bukan progres.</td>
+</tr>
+<tr>
+<td><code>CHECKLIST.md</code></td>
+<td>Checklist pengerjaan dan status.</td>
+<td>Tempat catatan progres.</td>
+</tr>
+<tr>
+<td><code>architecture.md</code></td>
+<td>Ringkasan arsitektur.</td>
+<td>Versi pendek desain sistem.</td>
+</tr>
+<tr>
+<td><code>address.md</code></td>
+<td>Peta path dan alamat.</td>
+<td>Membantu navigasi repo.</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>Dependency Python.</td>
+<td>Dipakai untuk setup venv.</td>
+</tr>
+<tr>
+<td><code>.env.example</code></td>
+<td>Template environment.</td>
+<td>Disalin menjadi <code>.env</code>.</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Aturan file yang tidak di-commit.</td>
+<td>Melindungi secrets dan runtime output.</td>
+</tr>
+<tr>
+<td><code>docker-compose-kafka.yml</code></td>
+<td>Kafka dan Zookeeper.</td>
+<td>Stack message broker.</td>
+</tr>
+<tr>
+<td><code>docker-compose-hadoop.yml</code></td>
+<td>Hadoop cluster lokal.</td>
+<td>Stack HDFS dan YARN.</td>
+</tr>
+<tr>
+<td><code>hadoop.env</code></td>
+<td>Konfigurasi Hadoop.</td>
+<td>Termasuk replikasi HDFS.</td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>Script operasional.</td>
+<td>Start, stop, init, run, check.</td>
+</tr>
+<tr>
+<td><code>kafka/</code></td>
+<td>Producer dan consumer.</td>
+<td>Logika ingestion dan sink.</td>
+</tr>
+<tr>
+<td><code>spark/</code></td>
+<td>Notebook analisis.</td>
+<td>Logika agregasi data.</td>
+</tr>
+<tr>
+<td><code>dashboard/</code></td>
+<td>Flask app dan frontend.</td>
+<td>Layer presentasi.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="komponen-infrastruktur">Komponen Infrastruktur</h2>
+<h3 id="zookeeper">Zookeeper</h3>
+<p><strong>Teknis:</strong> Service <code>zookeeper</code> memakai image <code>wurstmeister/zookeeper</code> dan port <code>2181</code>.</p>
+<p><strong>Maksud sederhana:</strong> Komponen pendukung Kafka.</p>
+<h3 id="kafka-broker">Kafka broker</h3>
+<p><strong>Teknis:</strong> Service Kafka memakai container <code>kafka-broker</code> dengan port <code>9092</code> dan <code>29092</code>.</p>
+<p><strong>Maksud sederhana:</strong> Server antrian utama.</p>
+<h3 id="namenode">NameNode</h3>
+<p><strong>Teknis:</strong> <code>namenode</code> membuka UI <code>9870</code> dan RPC <code>9000</code>.</p>
+<p><strong>Maksud sederhana:</strong> Pusat metadata HDFS.</p>
+<h3 id="datanode">DataNode</h3>
+<p><strong>Teknis:</strong> <code>datanode1</code>, <code>datanode2</code>, dan <code>datanode3</code> menyimpan block HDFS.</p>
+<p><strong>Maksud sederhana:</strong> Rak penyimpanan data.</p>
+<h3 id="resourcemanager">ResourceManager</h3>
+<p><strong>Teknis:</strong> <code>resourcemanager</code> membuka UI YARN di <code>8088</code>.</p>
+<p><strong>Maksud sederhana:</strong> Pengelola resource Hadoop.</p>
+<h3 id="nodemanager">NodeManager</h3>
+<p><strong>Teknis:</strong> <code>nodemanager</code> menjadi worker YARN.</p>
+<p><strong>Maksud sederhana:</strong> Pekerja cluster.</p>
+<h2 id="pipeline-kafka">Pipeline Kafka</h2>
+<h3 id="topic-api">Topic API</h3>
+<p><strong>Teknis:</strong> <code>airquality-api</code> berisi event AQI.</p>
+<p><strong>Maksud sederhana:</strong> Saluran angka kualitas udara.</p>
+<h3 id="topic-rss">Topic RSS</h3>
+<p><strong>Teknis:</strong> <code>airquality-rss</code> berisi event berita.</p>
+<p><strong>Maksud sederhana:</strong> Saluran konteks berita.</p>
+<h3 id="kafka-key-api">Kafka key API</h3>
+<p><strong>Teknis:</strong> Key memakai <code>city_slug</code>.</p>
+<p><strong>Maksud sederhana:</strong> Setiap kota punya identitas.</p>
+<h3 id="kafka-key-rss">Kafka key RSS</h3>
+<p><strong>Teknis:</strong> Key memakai MD5 dari link.</p>
+<p><strong>Maksud sederhana:</strong> Setiap berita punya identitas.</p>
+<h3 id="manual-topic-creation">Manual topic creation</h3>
+<p><strong>Teknis:</strong> <code>KAFKA_AUTO_CREATE_TOPICS_ENABLE=false</code>.</p>
+<p><strong>Maksud sederhana:</strong> Topic dibuat sengaja, bukan otomatis.</p>
+<h3 id="consumer-group">Consumer group</h3>
+<p><strong>Teknis:</strong> API dan RSS memakai group berbeda.</p>
+<p><strong>Maksud sederhana:</strong> Posisi baca dua aliran dipisah.</p>
+<h2 id="penyimpanan-hdfs">Penyimpanan HDFS</h2>
+<h3 id="path-api">Path API</h3>
+<p><strong>Teknis:</strong> <code>/data/airquality/api/</code> menyimpan NDJSON AQI.</p>
+<p><strong>Maksud sederhana:</strong> Arsip angka kualitas udara.</p>
+<h3 id="path-rss">Path RSS</h3>
+<p><strong>Teknis:</strong> <code>/data/airquality/rss/</code> menyimpan NDJSON berita.</p>
+<p><strong>Maksud sederhana:</strong> Arsip konteks berita.</p>
+<h3 id="path-hasil">Path hasil</h3>
+<p><strong>Teknis:</strong> <code>/data/airquality/hasil/</code> menyimpan output Spark.</p>
+<p><strong>Maksud sederhana:</strong> Arsip hasil analisis.</p>
+<h3 id="replikasi">Replikasi</h3>
+<p><strong>Teknis:</strong> <code>dfs.replication=2</code>.</p>
+<p><strong>Maksud sederhana:</strong> Setiap block punya salinan.</p>
+<h3 id="write-mode">Write mode</h3>
+<p><strong>Teknis:</strong> <code>docker_exec</code> menjadi default.</p>
+<p><strong>Maksud sederhana:</strong> Lebih aman untuk WSL2.</p>
+<h3 id="format">Format</h3>
+<p><strong>Teknis:</strong> File batch memakai JSON per baris.</p>
+<p><strong>Maksud sederhana:</strong> Mudah dibaca Spark.</p>
+<h2 id="analisis-spark">Analisis Spark</h2>
+<h3 id="input">Input</h3>
+<p><strong>Teknis:</strong> Spark membaca <code>/data/airquality/api/*.json</code>.</p>
+<p><strong>Maksud sederhana:</strong> Bahan analisis adalah data historis.</p>
+<h3 id="normalisasi-waktu">Normalisasi waktu</h3>
+<p><strong>Teknis:</strong> <code>observed_at</code> diprioritaskan, lalu <code>timestamp_ingest</code>.</p>
+<p><strong>Maksud sederhana:</strong> Pakai waktu terbaik yang tersedia.</p>
+<h3 id="kategori-aqi">Kategori AQI</h3>
+<p><strong>Teknis:</strong> AQI dipetakan ke Baik, Sedang, Tidak Sehat, Berbahaya.</p>
+<p><strong>Maksud sederhana:</strong> Angka jadi label mudah dibaca.</p>
+<h3 id="analisis-1">Analisis 1</h3>
+<p><strong>Teknis:</strong> Distribusi kategori AQI per kota.</p>
+<p><strong>Maksud sederhana:</strong> Melihat komposisi kondisi udara.</p>
+<h3 id="analisis-2">Analisis 2</h3>
+<p><strong>Teknis:</strong> Rata-rata AQI per kota per jam.</p>
+<p><strong>Maksud sederhana:</strong> Menemukan jam rawan.</p>
+<h3 id="analisis-3">Analisis 3</h3>
+<p><strong>Teknis:</strong> Ranking kota berdasarkan rata-rata AQI dan event &gt;100.</p>
+<p><strong>Maksud sederhana:</strong> Menentukan prioritas kota.</p>
+<h2 id="dashboard-flask">Dashboard Flask</h2>
+<h3 id="route-utama">Route utama</h3>
+<p><strong>Teknis:</strong> <code>/</code> merender <code>index.html</code>.</p>
+<p><strong>Maksud sederhana:</strong> Halaman dashboard.</p>
+<h3 id="api-data">API data</h3>
+<p><strong>Teknis:</strong> <code>/api/data</code> menggabungkan Spark, API, dan RSS.</p>
+<p><strong>Maksud sederhana:</strong> Satu endpoint untuk browser.</p>
+<h3 id="api-status">API status</h3>
+<p><strong>Teknis:</strong> <code>/api/status</code> menjadi alias.</p>
+<p><strong>Maksud sederhana:</strong> Kompatibilitas endpoint.</p>
+<h3 id="fallback-demo">Fallback demo</h3>
+<p><strong>Teknis:</strong> Backend punya data contoh jika file belum ada.</p>
+<p><strong>Maksud sederhana:</strong> Dashboard tetap bisa dibuka.</p>
+<h3 id="auto-refresh">Auto refresh</h3>
+<p><strong>Teknis:</strong> Frontend fetch ulang setiap 30 detik.</p>
+<p><strong>Maksud sederhana:</strong> Data diperbarui otomatis.</p>
+<h3 id="theme">Theme</h3>
+<p><strong>Teknis:</strong> Tema light/dark disimpan di localStorage.</p>
+<p><strong>Maksud sederhana:</strong> Tampilan nyaman dibaca lama.</p>
+<h2 id="konfigurasi-environment">Konfigurasi Environment</h2>
+<h3 id="kafkabootstrap">KAFKA_BOOTSTRAP</h3>
+<p><strong>Teknis:</strong> <code>KAFKA_BOOTSTRAP</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>KAFKA_BOOTSTRAP</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="kafkatopicapi">KAFKA_TOPIC_API</h3>
+<p><strong>Teknis:</strong> <code>KAFKA_TOPIC_API</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>KAFKA_TOPIC_API</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="kafkatopicrss">KAFKA_TOPIC_RSS</h3>
+<p><strong>Teknis:</strong> <code>KAFKA_TOPIC_RSS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>KAFKA_TOPIC_RSS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="aqicntoken">AQICN_TOKEN</h3>
+<p><strong>Teknis:</strong> <code>AQICN_TOKEN</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>AQICN_TOKEN</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="forcesimulator">FORCE_SIMULATOR</h3>
+<p><strong>Teknis:</strong> <code>FORCE_SIMULATOR</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>FORCE_SIMULATOR</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="pollintervalsec">POLL_INTERVAL_SEC</h3>
+<p><strong>Teknis:</strong> <code>POLL_INTERVAL_SEC</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>POLL_INTERVAL_SEC</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="httptimeoutsec">HTTP_TIMEOUT_SEC</h3>
+<p><strong>Teknis:</strong> <code>HTTP_TIMEOUT_SEC</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HTTP_TIMEOUT_SEC</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="pollintervalsecrss">POLL_INTERVAL_SEC_RSS</h3>
+<p><strong>Teknis:</strong> <code>POLL_INTERVAL_SEC_RSS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>POLL_INTERVAL_SEC_RSS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="rssfeeds">RSS_FEEDS</h3>
+<p><strong>Teknis:</strong> <code>RSS_FEEDS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>RSS_FEEDS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="rsskeywords">RSS_KEYWORDS</h3>
+<p><strong>Teknis:</strong> <code>RSS_KEYWORDS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>RSS_KEYWORDS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="rssfallbacktopn">RSS_FALLBACK_TOPN</h3>
+<p><strong>Teknis:</strong> <code>RSS_FALLBACK_TOPN</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>RSS_FALLBACK_TOPN</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="rssuseragent">RSS_USER_AGENT</h3>
+<p><strong>Teknis:</strong> <code>RSS_USER_AGENT</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>RSS_USER_AGENT</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="rssseenidsfile">RSS_SEEN_IDS_FILE</h3>
+<p><strong>Teknis:</strong> <code>RSS_SEEN_IDS_FILE</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>RSS_SEEN_IDS_FILE</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="rssmaxseenids">RSS_MAX_SEEN_IDS</h3>
+<p><strong>Teknis:</strong> <code>RSS_MAX_SEEN_IDS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>RSS_MAX_SEEN_IDS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="hdfsnamenodeurl">HDFS_NAMENODE_URL</h3>
+<p><strong>Teknis:</strong> <code>HDFS_NAMENODE_URL</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HDFS_NAMENODE_URL</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="hdfsnamenoderpc">HDFS_NAMENODE_RPC</h3>
+<p><strong>Teknis:</strong> <code>HDFS_NAMENODE_RPC</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HDFS_NAMENODE_RPC</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="hdfsuser">HDFS_USER</h3>
+<p><strong>Teknis:</strong> <code>HDFS_USER</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HDFS_USER</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="hdfsbasedir">HDFS_BASE_DIR</h3>
+<p><strong>Teknis:</strong> <code>HDFS_BASE_DIR</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HDFS_BASE_DIR</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="hdfsnamenodecontainer">HDFS_NAMENODE_CONTAINER</h3>
+<p><strong>Teknis:</strong> <code>HDFS_NAMENODE_CONTAINER</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HDFS_NAMENODE_CONTAINER</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="hdfswritemode">HDFS_WRITE_MODE</h3>
+<p><strong>Teknis:</strong> <code>HDFS_WRITE_MODE</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>HDFS_WRITE_MODE</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="bufferflushsec">BUFFER_FLUSH_SEC</h3>
+<p><strong>Teknis:</strong> <code>BUFFER_FLUSH_SEC</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>BUFFER_FLUSH_SEC</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="buffermaxrecords">BUFFER_MAX_RECORDS</h3>
+<p><strong>Teknis:</strong> <code>BUFFER_MAX_RECORDS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>BUFFER_MAX_RECORDS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="consumergroupapi">CONSUMER_GROUP_API</h3>
+<p><strong>Teknis:</strong> <code>CONSUMER_GROUP_API</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>CONSUMER_GROUP_API</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="consumergrouprss">CONSUMER_GROUP_RSS</h3>
+<p><strong>Teknis:</strong> <code>CONSUMER_GROUP_RSS</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>CONSUMER_GROUP_RSS</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="dashboarddatadir">DASHBOARD_DATA_DIR</h3>
+<p><strong>Teknis:</strong> <code>DASHBOARD_DATA_DIR</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>DASHBOARD_DATA_DIR</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h3 id="port">PORT</h3>
+<p><strong>Teknis:</strong> <code>PORT</code> mengubah perilaku runtime komponen terkait.</p>
+<p><strong>Maksud sederhana:</strong> <code>PORT</code> adalah tuas konfigurasi agar proyek bisa menyesuaikan mesin dan kebutuhan demo.</p>
+<h2 id="cara-menjalankan">Cara Menjalankan</h2>
+<h3 id="clone-repository">Clone repository</h3>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/mamettdd/Kelompok-6-ets-bigdata.git
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>git clone https://github.com/mamettdd/Kelompok-6-ets-bigdata.git</code> menjalankan tahap clone repository.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="masuk-folder-proyek">Masuk folder proyek</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> Kelompok-6-ets-bigdata
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>cd Kelompok-6-ets-bigdata</code> menjalankan tahap masuk folder proyek.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="buat-virtual-environment">Buat virtual environment</h3>
+<pre class="hljs"><code><div>python3 -m venv .venv
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>python3 -m venv .venv</code> menjalankan tahap buat virtual environment.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="aktifkan-virtual-environment">Aktifkan virtual environment</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">source</span> .venv/bin/activate
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>source .venv/bin/activate</code> menjalankan tahap aktifkan virtual environment.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="install-dependency">Install dependency</h3>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>pip install -r requirements.txt</code> menjalankan tahap install dependency.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="salin-environment">Salin environment</h3>
+<pre class="hljs"><code><div>cp .env.example .env
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>cp .env.example .env</code> menjalankan tahap salin environment.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="start-stack">Start stack</h3>
+<pre class="hljs"><code><div>bash scripts/start-stack.sh
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>bash scripts/start-stack.sh</code> menjalankan tahap start stack.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="init-infrastruktur">Init infrastruktur</h3>
+<pre class="hljs"><code><div>bash scripts/init-infra.sh
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>bash scripts/init-infra.sh</code> menjalankan tahap init infrastruktur.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="sanity-check">Sanity check</h3>
+<pre class="hljs"><code><div>bash scripts/sanity-check.sh
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>bash scripts/sanity-check.sh</code> menjalankan tahap sanity check.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="run-producers">Run producers</h3>
+<pre class="hljs"><code><div>bash scripts/run-producers.sh
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>bash scripts/run-producers.sh</code> menjalankan tahap run producers.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="run-consumer">Run consumer</h3>
+<pre class="hljs"><code><div>bash scripts/run-consumer.sh
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>bash scripts/run-consumer.sh</code> menjalankan tahap run consumer.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="run-spark-notebook">Run Spark notebook</h3>
+<pre class="hljs"><code><div>jupyter notebook spark/analysis.ipynb
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>jupyter notebook spark/analysis.ipynb</code> menjalankan tahap run spark notebook.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h3 id="run-dashboard">Run dashboard</h3>
+<pre class="hljs"><code><div>bash scripts/run-dashboard.sh
+</div></code></pre>
+<p><strong>Teknis:</strong> Command <code>bash scripts/run-dashboard.sh</code> menjalankan tahap run dashboard.</p>
+<p><strong>Maksud sederhana:</strong> Tahap ini membawa proyek satu langkah lebih dekat ke dashboard berjalan.</p>
+<h2 id="verifikasi">Verifikasi</h2>
+<h3 id="cek-container">Cek container</h3>
+<pre class="hljs"><code><div>docker ps --format <span class="hljs-string">'table {{.Names}}\t{{.Status}}\t{{.Ports}}'</span>
+</div></code></pre>
+<p><strong>Teknis:</strong> docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'</p>
+<p><strong>Maksud sederhana:</strong> Memastikan container hidup.</p>
+<h3 id="cek-topic-kafka">Cek topic Kafka</h3>
+<pre class="hljs"><code><div>docker <span class="hljs-built_in">exec</span> kafka-broker kafka-topics.sh --bootstrap-server localhost:9092 --list
+</div></code></pre>
+<p><strong>Teknis:</strong> docker exec kafka-broker kafka-topics.sh --bootstrap-server localhost:9092 --list</p>
+<p><strong>Maksud sederhana:</strong> Memastikan saluran data ada.</p>
+<h3 id="cek-folder-hdfs">Cek folder HDFS</h3>
+<pre class="hljs"><code><div>docker <span class="hljs-built_in">exec</span> namenode hdfs dfs -ls -R /data/airquality/
+</div></code></pre>
+<p><strong>Teknis:</strong> docker exec namenode hdfs dfs -ls -R /data/airquality/</p>
+<p><strong>Maksud sederhana:</strong> Memastikan gudang data siap.</p>
+<h3 id="cek-api-dashboard">Cek API dashboard</h3>
+<pre class="hljs"><code><div>curl -s http://127.0.0.1:5000/api/data
+</div></code></pre>
+<p><strong>Teknis:</strong> <code>curl -s http://127.0.0.1:5000/api/data</code></p>
+<p><strong>Maksud sederhana:</strong> Memastikan Flask memberi data.</p>
+<h3 id="cek-consumer-group-api">Cek consumer group API</h3>
+<pre class="hljs"><code><div>docker <span class="hljs-built_in">exec</span> kafka-broker kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group airquality-consumer-api
+</div></code></pre>
+<p><strong>Teknis:</strong> docker exec kafka-broker kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group airquality-consumer-api</p>
+<p><strong>Maksud sederhana:</strong> Memastikan consumer API terlacak.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Gejala</th>
+<th>Penyebab</th>
+<th>Solusi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker permission denied</td>
+<td>User belum masuk grup <code>docker</code>.</td>
+<td>Tambahkan user ke grup docker lalu login ulang.</td>
+</tr>
+<tr>
+<td>Kafka tidak connect</td>
+<td>Container belum siap atau port belum terbuka.</td>
+<td>Jalankan stack dan tunggu beberapa detik.</td>
+</tr>
+<tr>
+<td>Topic tidak ada</td>
+<td>Init belum dijalankan.</td>
+<td>Jalankan <code>bash scripts/init-infra.sh</code>.</td>
+</tr>
+<tr>
+<td>Consumer belum flush</td>
+<td>Buffer belum mencapai batas waktu atau jumlah.</td>
+<td>Turunkan <code>BUFFER_FLUSH_SEC</code> untuk demo.</td>
+</tr>
+<tr>
+<td>HDFS gagal via WebHDFS</td>
+<td>Redirect hostname DataNode bermasalah di WSL2.</td>
+<td>Gunakan <code>HDFS_WRITE_MODE=docker_exec</code>.</td>
+</tr>
+<tr>
+<td>Notebook error module hdfs</td>
+<td>Kernel tidak memakai venv yang benar.</td>
+<td>Install requirements dan pilih kernel venv.</td>
+</tr>
+<tr>
+<td>Dashboard masih demo</td>
+<td>File JSON runtime belum tersedia.</td>
+<td>Jalankan producer, consumer, dan Spark.</td>
+</tr>
+<tr>
+<td>RSS terlalu umum</td>
+<td>Fallback Top-N aktif atau keyword terlalu longgar.</td>
+<td>Atur <code>RSS_KEYWORDS</code> dan <code>RSS_FEEDS</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="argumentasi-desain">Argumentasi Desain</h2>
+<h3 id="mengapa-kafka">Mengapa Kafka?</h3>
+<p><strong>Teknis:</strong> Kafka memisahkan producer dan consumer menggunakan topic dan offset.</p>
+<p><strong>Maksud sederhana:</strong> Pengambil data tidak terganggu jika penyimpan sedang lambat.</p>
+<h3 id="mengapa-hdfs">Mengapa HDFS?</h3>
+<p><strong>Teknis:</strong> HDFS menyimpan file historis dengan replikasi.</p>
+<p><strong>Maksud sederhana:</strong> Data lama tetap aman sebagai arsip.</p>
+<h3 id="mengapa-spark">Mengapa Spark?</h3>
+<p><strong>Teknis:</strong> Spark cocok untuk agregasi historis dan SQL.</p>
+<p><strong>Maksud sederhana:</strong> Data mentah berubah menjadi insight.</p>
+<h3 id="mengapa-flask">Mengapa Flask?</h3>
+<p><strong>Teknis:</strong> Flask cukup ringan untuk API dan dashboard lokal.</p>
+<p><strong>Maksud sederhana:</strong> Hasil mudah dibuka di browser.</p>
+<h3 id="mengapa-json-mirror">Mengapa JSON mirror?</h3>
+<p><strong>Teknis:</strong> Dashboard membaca file ringkas, bukan HDFS langsung.</p>
+<p><strong>Maksud sederhana:</strong> Halaman lebih cepat dan sederhana.</p>
+<h3 id="mengapa-simulator">Mengapa simulator?</h3>
+<p><strong>Teknis:</strong> Simulator menjaga pipeline tetap testable saat API gagal.</p>
+<p><strong>Maksud sederhana:</strong> Demo tetap berjalan.</p>
+<h2 id="batasan-dan-rekomendasi">Batasan dan Rekomendasi</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Batasan</th>
+<th>Rekomendasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Token contoh</td>
+<td>Token nyata tidak ideal di <code>.env.example</code>.</td>
+<td>Ganti dengan placeholder sebelum publik.</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>Satu broker dan replication factor topic 1.</td>
+<td>Tambah broker untuk produksi.</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>Filter keyword sederhana.</td>
+<td>Tambahkan NLP jika butuh presisi.</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>RSS belum dianalisis formal.</td>
+<td>Tambahkan join RSS dan AQI per jam.</td>
+</tr>
+<tr>
+<td>Notebook</td>
+<td><code>HDFS_BASE</code> hardcoded.</td>
+<td>Baca dari environment agar fleksibel.</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>Debug mode cocok lokal saja.</td>
+<td>Matikan debug untuk publik.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="glosarium">Glosarium</h2>
+<h3 id="aqi">AQI</h3>
+<p><strong>Teknis:</strong> <code>AQI</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Indeks kualitas udara</p>
+<h3 id="producer">Producer</h3>
+<p><strong>Teknis:</strong> <code>Producer</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Pengirim data</p>
+<h3 id="consumer">Consumer</h3>
+<p><strong>Teknis:</strong> <code>Consumer</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Pembaca data</p>
+<h3 id="topic">Topic</h3>
+<p><strong>Teknis:</strong> <code>Topic</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Saluran Kafka</p>
+<h3 id="offset">Offset</h3>
+<p><strong>Teknis:</strong> <code>Offset</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Posisi baca</p>
+<h3 id="hdfs">HDFS</h3>
+<p><strong>Teknis:</strong> <code>HDFS</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Gudang file terdistribusi</p>
+<h3 id="istilah-namenode">Istilah NameNode</h3>
+<p><strong>Teknis:</strong> <code>NameNode</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Daftar isi HDFS</p>
+<h3 id="istilah-datanode">Istilah DataNode</h3>
+<p><strong>Teknis:</strong> <code>DataNode</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Penyimpan block</p>
+<h3 id="spark">Spark</h3>
+<p><strong>Teknis:</strong> <code>Spark</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Mesin analisis</p>
+<h3 id="flask">Flask</h3>
+<p><strong>Teknis:</strong> <code>Flask</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Server web</p>
+<h3 id="parquet">Parquet</h3>
+<p><strong>Teknis:</strong> <code>Parquet</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> Format kolumnar</p>
+<h3 id="ndjson">NDJSON</h3>
+<p><strong>Teknis:</strong> <code>NDJSON</code> adalah istilah teknis dalam sistem ini.</p>
+<p><strong>Maksud sederhana:</strong> JSON per baris</p>
+<h2 id="lampiran-rinci">Lampiran Rinci</h2>
+<h3 id="lampiran-1-producer-api">Lampiran 1: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-2-producer-rss">Lampiran 2: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-3-kafka">Lampiran 3: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-4-consumer">Lampiran 4: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-5-hdfs">Lampiran 5: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-6-spark">Lampiran 6: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-7-flask">Lampiran 7: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-8-browser">Lampiran 8: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-9-producer-api">Lampiran 9: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-10-producer-rss">Lampiran 10: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-11-kafka">Lampiran 11: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-12-consumer">Lampiran 12: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-13-hdfs">Lampiran 13: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-14-spark">Lampiran 14: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-15-flask">Lampiran 15: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-16-browser">Lampiran 16: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-17-producer-api">Lampiran 17: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-18-producer-rss">Lampiran 18: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-19-kafka">Lampiran 19: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-20-consumer">Lampiran 20: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-21-hdfs">Lampiran 21: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-22-spark">Lampiran 22: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-23-flask">Lampiran 23: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-24-browser">Lampiran 24: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-25-producer-api">Lampiran 25: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-26-producer-rss">Lampiran 26: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-27-kafka">Lampiran 27: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-28-consumer">Lampiran 28: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-29-hdfs">Lampiran 29: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-30-spark">Lampiran 30: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-31-flask">Lampiran 31: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-32-browser">Lampiran 32: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-33-producer-api">Lampiran 33: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-34-producer-rss">Lampiran 34: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-35-kafka">Lampiran 35: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-36-consumer">Lampiran 36: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-37-hdfs">Lampiran 37: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-38-spark">Lampiran 38: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-39-flask">Lampiran 39: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-40-browser">Lampiran 40: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-41-producer-api">Lampiran 41: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-42-producer-rss">Lampiran 42: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-43-kafka">Lampiran 43: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-44-consumer">Lampiran 44: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-45-hdfs">Lampiran 45: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-46-spark">Lampiran 46: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-47-flask">Lampiran 47: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-48-browser">Lampiran 48: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-49-producer-api">Lampiran 49: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-50-producer-rss">Lampiran 50: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-51-kafka">Lampiran 51: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-52-consumer">Lampiran 52: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-53-hdfs">Lampiran 53: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-54-spark">Lampiran 54: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-55-flask">Lampiran 55: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-56-browser">Lampiran 56: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-57-producer-api">Lampiran 57: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-58-producer-rss">Lampiran 58: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-59-kafka">Lampiran 59: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-60-consumer">Lampiran 60: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-61-hdfs">Lampiran 61: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-62-spark">Lampiran 62: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-63-flask">Lampiran 63: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-64-browser">Lampiran 64: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-65-producer-api">Lampiran 65: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-66-producer-rss">Lampiran 66: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-67-kafka">Lampiran 67: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-68-consumer">Lampiran 68: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-69-hdfs">Lampiran 69: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-70-spark">Lampiran 70: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-71-flask">Lampiran 71: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-72-browser">Lampiran 72: Browser</h3>
+<p><strong>Teknis:</strong> Browser bertugas menampilkan dashboard. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Browser adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-73-producer-api">Lampiran 73: Producer API</h3>
+<p><strong>Teknis:</strong> Producer API bertugas membangun event AQI. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer API adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-74-producer-rss">Lampiran 74: Producer RSS</h3>
+<p><strong>Teknis:</strong> Producer RSS bertugas membangun event RSS. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Producer RSS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-75-kafka">Lampiran 75: Kafka</h3>
+<p><strong>Teknis:</strong> Kafka bertugas menyimpan message. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Kafka adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-76-consumer">Lampiran 76: Consumer</h3>
+<p><strong>Teknis:</strong> Consumer bertugas menulis batch. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Consumer adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-77-hdfs">Lampiran 77: HDFS</h3>
+<p><strong>Teknis:</strong> HDFS bertugas menyimpan historis. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> HDFS adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-78-spark">Lampiran 78: Spark</h3>
+<p><strong>Teknis:</strong> Spark bertugas menghitung insight. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Spark adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h3 id="lampiran-79-flask">Lampiran 79: Flask</h3>
+<p><strong>Teknis:</strong> Flask bertugas menyediakan API. Detail ini penting karena pipeline hanya mudah dirawat jika tanggung jawab setiap modul jelas.</p>
+<p><strong>Maksud sederhana:</strong> Flask adalah salah satu bagian rantai dari data mentah sampai tampilan pengguna.</p>
+<h2 id="kesimpulan">Kesimpulan</h2>
+<p>AirQuality Alert adalah pipeline Big Data dari ingestion sampai dashboard.</p>
+<p>Kafka menjadi antrian data.</p>
+<p>HDFS menjadi penyimpanan historis.</p>
+<p>Spark menjadi mesin analisis.</p>
+<p>Flask menjadi layer presentasi.</p>
+<p>README utama ini menjelaskan sistem; catatan progres berada di <code>CHECKLIST.md</code>.</p>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li><a href="https://kafka.apache.org/documentation/">Apache Kafka Documentation</a></li>
+<li><a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">Apache Hadoop HDFS Design</a></li>
+<li><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">Apache Spark SQL Guide</a></li>
+<li><a href="https://flask.palletsprojects.com/">Flask Documentation</a></li>
+<li><a href="https://aqicn.org/api/">AQICN API</a></li>
+<li><a href="https://www.chartjs.org/docs/latest/">Chart.js Documentation</a></li>
+</ul>
+
+</body>
+</html>
